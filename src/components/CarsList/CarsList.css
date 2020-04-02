@@ -1,0 +1,108 @@
+body {
+    padding: 10px;
+}
+
+.main-car-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-car {
+    display: Flex;
+    justify-content: flex-end;
+}
+
+.add-car-button {
+    padding: 10px;
+    font-size: 15px;
+    background-color: lightblue;
+    border-radius: 5px;
+}
+
+.car1-main-block {
+    display: flex;
+    justify-content: space-between;
+}
+
+.car-function {
+    display: flex;
+    justify-content: space-between;
+}
+
+.car1 {
+    width: 70%;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 1.0, 0.2), 0 4px 20px 0 rgba(0, 0, 5.0, 0.15);
+    padding: 0px 40px 20px 40px;
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+
+.car-list-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.carSpeedControlButton {
+    padding: 10px 20px 10px 20px;
+    font-family: sans-serif, regular;
+    font-size: 18px;
+    border-style: none;
+    border-radius: 5px;
+}
+
+.accelerate {
+    border: 1px solid #3366ff;
+    color: #3366ff;
+}
+
+.accelerate-active {
+    border: 1px solid #3366ff;
+    color: white;
+    background-color: #3366ff;
+}
+
+.apply-break {
+    border: 1px solid #ff3300;
+    color: #ff3300;
+}
+
+.apply-break-active {
+    border: 1px solid #ff3300;
+    color: white;
+    background-color: #ff3300;
+}
+
+.start-button {
+    background-color: green;
+}
+
+.stop-button {
+    background-color: red;
+}
+
+.carDisplayText {
+    font-family: sans-serif, regular;
+    font-size: 18px;
+}
+
+.remove-car {
+    font-family: fantasy;
+    margin-right: -20px;
+    color: red;
+    text-shadow: 2px 0 #888888;
+    font-weight: bold;
+}
+
+.car-list-number {
+    margin-left: -30px;
+}
+
+.cars-li-tag {
+    list-style-type: none;
+}
+
+.cars-ul-tag {
+    padding: 0px;
+}

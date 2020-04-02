@@ -1,0 +1,213 @@
+.country-dashboard-wrapper {
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 1.0, 0.2), 0 4px 20px 0 rgba(0, 0, 5.0, 0.15);
+    /*background-color: black;*/
+    transition: 0.7s ease-out;
+}
+
+.country-dashboard-header {
+    display: flex;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 1.0, 0.2), 0 4px 20px 0 rgba(0, 0, 5.0, 0.15);
+    padding: 30px 10px 30px 10px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: whitesmoke;
+    transition: 0.7s ease-out;
+    /*color: whitesmoke;*/
+    /*border: 1px solid red;*/
+    /*position: fixed;*/
+    /*top: 0px;*/
+    /*width: 96%;*/
+}
+
+.countries-filter-bar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.search-bar {
+    border-radius: 5px;
+    font-size: 18px;
+    border-style: none;
+    margin: 10px;
+    padding: 10px 20px 10px 20px;
+    background-color: whitesmoke;
+    /*color: whitesmoke;*/
+    transition: 0.7s ease-out;
+}
+
+.region-dropDown {
+    font-size: 18px;
+    margin: 10px;
+}
+
+.country-list {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+    margin: 40px 10px 0px 0px;
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    flex-wrap: wrap;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 1.0, 0.2), 0 4px 20px 0 rgba(0, 0, 5.0, 0.15);
+    background-color: whitesmoke;
+    /*color: whitesmoke;*/
+    transition: 0.7s ease-out;
+    border-radius: 5px;
+}
+
+.country-ul-tag {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 0px;
+    margin: 0px;
+    padding-bottom: 20px;
+}
+
+.countries-flag {
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+    border-radius: 5px 5px 0px 0px;
+}
+
+.countries-data {
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    font-family: sans-serif, regular;
+}
+
+.country-name {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 20px 0px 25px 0px;
+}
+
+.loading-block {
+    text-align: center;
+}
+
+.background-darkmode {
+    background-color: #303045;
+    transition: 0.7s ease-in;
+}
+
+.searchIcon {
+    /*margin-right: -20px;
+    */
+}
+
+.search-area {
+    /*background-color: whitesmoke;*/
+    padding: 0px;
+}
+
+.search-icon {
+    margin-left: 20px
+}
+
+.darklight-icon-block {
+    display: flex;
+    transition: 0.7s ease-out;
+}
+
+.light-dark-mode-icon {
+    font-size: 30px;
+}
+
+
+.icon-text {
+    animation: 0.7s;
+}
+
+.each-country-data {
+    display: flex;
+    margin: 40px 20px 20px 20px;
+    padding-bottom: 20px
+}
+
+
+.eachCountry-country-flag {
+    height: 300px;
+    width: 400px;
+    object-fit: cover;
+    /*width: 70%;*/
+}
+
+.countryCard-text-block {
+    display: flex;
+    flex-direction: column;
+    /*padding-left: 40px;*/
+    /*padding-bottom: 20px;*/
+    /*font-family: sans-serif, regular;*/
+}
+
+
+.selected-country-name {
+    font-size: 18px;
+    font-weight: bold;
+    padding-bottom: 25px;
+}
+
+.inner-country-data {
+    padding-bottom: 10px;
+}
+
+.country-card-data-left {
+    display: flex;
+    flex-direction: column;
+    padding-left: 40px;
+    font-family: sans-serif, regular;
+}
+
+
+.country-card-data-right {
+    display: flex;
+    flex-direction: column;
+    padding: 45px 0px 20px 40px;
+    font-family: sans-serif, regular;
+}
+
+.countryCard-inner-data {
+    display: flex;
+}
+
+
+.li-tag-bordersCountries {
+    list-style-type: none;
+    padding-right: 20px;
+    padding-bottom: 10px;
+}
+
+.ul-tag-bordersCountries {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.border-buttons {
+    padding: 7px 12px 7px 12px;
+    font-size: 15px;
+    border-style: none;
+    border-radius: 5px;
+    background-color: whitesmoke;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 1.0, 0.2), 0 4px 20px 0 rgba(0, 0, 5.0, 0.15);
+    transition: 0.7s ease-out;
+}
+
+.dark-mode {
+    background-color: #303545;
+    color: whitesmoke;
+    transition: 0.7s ease-out;
+}
+
+.go-back {
+    margin: 20px;
+}
+
+
+.button-dark-mode {
+    transition: 0.7s ease-out;
+}
