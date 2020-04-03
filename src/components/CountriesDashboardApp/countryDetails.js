@@ -2,8 +2,8 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import './index.css';
 import { TiArrowBack } from "react-icons/ti";
-import { DarkLightMode } from "./index.js";
-class SpecifiedCountry extends React.Component {
+import DarkLightMode from "./index.js";
+class CountryDetails extends React.Component {
     state = {
         specifiedCountry: []
     }
@@ -142,7 +142,7 @@ class BorderCountries extends React.Component {
         return bordersCountries;
     }
 }
-export default withRouter(SpecifiedCountry);
+export default withRouter(CountryDetails);
 
 
 

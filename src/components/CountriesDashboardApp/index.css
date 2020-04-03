@@ -52,7 +52,7 @@
     box-shadow: 0 2px 4px 0 rgba(0, 0, 1.0, 0.2), 0 4px 20px 0 rgba(0, 0, 5.0, 0.15);
     background-color: whitesmoke;
     /*color: whitesmoke;*/
-    transition: 0.7s ease-out;
+    transition: 0.7s;
     border-radius: 5px;
 }
 
@@ -200,7 +200,7 @@
 .dark-mode {
     background-color: #303545;
     color: whitesmoke;
-    transition: 0.7s ease-out;
+    transition: 0.7s;
 }
 
 .go-back {
