@@ -1,6 +1,5 @@
 .country-dashboard-wrapper {
     box-shadow: 0 2px 4px 0 rgba(0, 0, 1.0, 0.2), 0 4px 20px 0 rgba(0, 0, 5.0, 0.15);
-    /*background-color: black;*/
     transition: 0.7s ease-out;
 }
 
@@ -12,11 +11,6 @@
     align-items: center;
     background-color: whitesmoke;
     transition: 0.7s ease-out;
-    /*color: whitesmoke;*/
-    /*border: 1px solid red;*/
-    /*position: fixed;*/
-    /*top: 0px;*/
-    /*width: 96%;*/
 }
 
 .countries-filter-bar {
@@ -31,13 +25,13 @@
     margin: 10px;
     padding: 10px 20px 10px 20px;
     background-color: whitesmoke;
-    /*color: whitesmoke;*/
     transition: 0.7s ease-out;
 }
 
 .region-dropDown {
     font-size: 18px;
     margin: 10px;
+    cursor: pointer;
 }
 
 .country-list {
@@ -51,7 +45,6 @@
     flex-wrap: wrap;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 1.0, 0.2), 0 4px 20px 0 rgba(0, 0, 5.0, 0.15);
     background-color: whitesmoke;
-    /*color: whitesmoke;*/
     transition: 0.7s;
     border-radius: 5px;
 }
@@ -101,7 +94,6 @@
 }
 
 .search-area {
-    /*background-color: whitesmoke;*/
     padding: 0px;
 }
 
@@ -112,6 +104,7 @@
 .darklight-icon-block {
     display: flex;
     transition: 0.7s ease-out;
+    cursor: pointer;
 }
 
 .light-dark-mode-icon {
@@ -134,15 +127,11 @@
     height: 300px;
     width: 400px;
     object-fit: cover;
-    /*width: 70%;*/
 }
 
 .countryCard-text-block {
     display: flex;
     flex-direction: column;
-    /*padding-left: 40px;*/
-    /*padding-bottom: 20px;*/
-    /*font-family: sans-serif, regular;*/
 }
 
 
