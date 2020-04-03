@@ -1,4 +1,4 @@
-import React from "react";
+/*import React from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -50,7 +50,7 @@ class App extends React.Component {
         </nav>
 
         {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL.*/}
+            renders the first one that matches the current URL.}*//*
 <Switch>
           <Route path="/reactComponents">
             <ReactComponents />
@@ -83,7 +83,7 @@ function Home() {
 }
 
 
-export default App;
+export default App;*/
 
 
 
@@ -128,26 +128,26 @@ export default App;
 
 
 //starting procedure
-// import React from "react";
-// import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-// import HomePage from "./components/HomePage";
-// import Page1 from "./components/Page1";
-// import "./App.css";
+import HomePage from "./components/HomePage";
+import Page1 from "./components/Page1";
+import "./App.css";
 
-// const App = () => {
-//   return (
-//     <Router basename={process.env.PUBLIC_URL}>
-//       <Switch>
-//         <Route exact path="/page-1">
-//           <Page1 />
-//         </Route>
-//         <Route path="/">
-//           <HomePage />
-//         </Route>
-//       </Switch>
-//     </Router>
-//   );
-// };
+const App = () => {
+  return (
+    <Router basename={process.env.PUBLIC_URL}>
+      <Switch>
+        <Route exact path="/page-1">
+          <Page1 />
+        </Route>
+        <Route path="/">
+          <HomePage />
+        </Route>
+      </Switch>
+    </Router>
+  );
+};
 
-// export default App;
+export default App;
