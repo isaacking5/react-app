@@ -3,9 +3,9 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 }
 from "react-router-dom";
+import Home from './Home.js'
 import './components/CarsList/CarsList.css';
 import './components/TodosList/todos.css';
 import './App.css';
@@ -15,6 +15,7 @@ import CountriesDashboardApp from './components/CountriesDashboardApp/index.js';
 import CountryDetails from './components/CountriesDashboardApp/countryDetails.js';
 import ReactComponents from './components/reactComponents/index.js';
 import './components/TodosList/todos.js';
+import EmojiesGame from './components/EmojiGameApp/index.js';
 
 
 class App extends React.Component {
@@ -28,27 +29,6 @@ class App extends React.Component {
   render() {
     return (
       <Router basename={process.env.PUBLIC_URL}>
-      <div>
-        <nav className="home-navBar">
-          <ul className="ul-tag-router">
-            <li className="li-tag-router">
-              <Link to="/">Home</Link>
-            </li>
-           <li className="li-tag-router">
-              <Link to="/CarsList">CarsList</Link>
-            </li>
-            <li className="li-tag-router">
-              <Link to="/reactComponents">React Components</Link>
-            </li>
-            <li className="li-tag-router">
-              <Link to="/TodosList">TodosList</Link>
-            </li>
-            <li className="li-tag-router">
-              <Link to="/countriesDashboardApp">Countries Dashboard App</Link>
-            </li>
-          </ul>
-        </nav>
-
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL.*/}
 <Switch>
@@ -57,6 +37,9 @@ class App extends React.Component {
           </Route>
           <Route path="/TodosList"> 
             <Todos />
+          </Route>
+          <Route path="/EmojiesGame">
+            <EmojiesGame />
           </Route>
           <Route exact path="/countriesDashboardApp">
             <CountriesDashboardApp  selectedTheme = {this.state.selectedTheme} onThemeChange = {this.onChangeTheme}/>
@@ -71,16 +54,15 @@ class App extends React.Component {
             <Home />
           </Route>
         </Switch> 
-        </div> 
 </Router >
 );
 }
 }
 
 
-function Home() {
-  return <h1>Home</h1>;
-}
+// function AppHome() {
+//   return <h1>Home</h1>;
+// }
 
 
 export default App;
