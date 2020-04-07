@@ -21,7 +21,6 @@ class App extends React.Component {
   state = {
     selectedTheme: false,
   }
-
   onChangeTheme = (mode) => {
     this.setState({ selectedTheme: mode });
   }
