@@ -6,6 +6,8 @@ import {
   Link
 }
 from "react-router-dom";
+import { observable } from 'mobx';
+import { observer } from 'mobx-react';
 import './components/CarsList/CarsList.css';
 import './components/TodosList/todos.css';
 import './App.css';
@@ -15,14 +17,22 @@ import CountriesDashboardApp from './components/CountriesDashboardApp/index.js';
 import CountryDetails from './components/CountriesDashboardApp/countryDetails.js';
 import ReactComponents from './components/reactComponents/index.js';
 import './components/TodosList/todos.js';
+import CounterPage from './components/CounterPage/index.js';
+import theme from './stores/ThemesStore/index.js';
 
-
+@observer
 class App extends React.Component {
-  state = {
-    selectedTheme: false,
-  }
+  @observable selectedTheme = false
+
+  // state = {
+  //   selectedTheme: false,
+  // }
+
+
   onChangeTheme = (mode) => {
-    this.setState({ selectedTheme: mode });
+    // this.setState({ selectedTheme: mode });
+    this.selectedTheme = mode;
+    // theme.setCurrentTheme(mode);
   }
   render() {
     return (
@@ -51,6 +61,9 @@ class App extends React.Component {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL.*/}
 <Switch>
+          <Route path="/counter-page">
+            <CounterPage />
+          </Route>
           <Route path="/reactComponents">
             <ReactComponents />
           </Route>
@@ -58,10 +71,10 @@ class App extends React.Component {
             <Todos />
           </Route>
           <Route exact path="/countriesDashboardApp">
-            <CountriesDashboardApp  selectedTheme = {this.state.selectedTheme} onThemeChange = {this.onChangeTheme}/>
+            <CountriesDashboardApp  selectedTheme = {this.selectedTheme} onThemeChange = {this.onChangeTheme}/>
           </Route>
           <Route exact path="/countriesDashboardApp/:specifiedCountry">
-            <CountryDetails selectedTheme = {this.state.selectedTheme} onThemeChange = {this.onChangeTheme}/>
+            <CountryDetails selectedTheme = {this.selectedTheme} onThemeChange = {this.onChangeTheme}/>
           </Route>
           <Route path="/CarsList">
             <CarsList />
@@ -72,8 +85,8 @@ class App extends React.Component {
         </Switch> 
         </div> 
 </Router >
-);
-}
+    );
+  }
 }
 
 
