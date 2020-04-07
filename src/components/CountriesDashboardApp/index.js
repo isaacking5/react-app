@@ -72,7 +72,7 @@ class CountriesDashboardApp extends React.Component {
         return (
             <div className = {this.props.selectedTheme ? "country-dashboard-wrapper background-darkmode":"country-dashboard-wrapper"}>
                 <div className = {this.props.selectedTheme ? "country-dashboard-header dark-mode":"country-dashboard-header"}>
-                        <h3>Where in the World ?</h3>
+                        <h3 className="text-2xl font-bold antialiased">Where in the World ?</h3>
                         <DarkLightMode changeTheme = {this.onChangeTheme} themeStatus = {this.props.selectedTheme}/>
                 </div>
                 <CountriesFilterBar filterByCountry = {this.filterCountriesByCountry} filterByRegion = {this.filterCountriesByRegion} themeColor = {this.props.selectedTheme}/>

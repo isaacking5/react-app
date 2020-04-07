@@ -1,4 +1,4 @@
-/*import React from "react";
+import React from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -12,7 +12,7 @@ import './App.css';
 import { Todos } from './components/TodosList/todos.js';
 import { CarsList } from './components/CarsList';
 import CountriesDashboardApp from './components/CountriesDashboardApp/index.js';
-import SpecifiedCountry from './components/CountriesDashboardApp/specifiedCountry.js';
+import CountryDetails from './components/CountriesDashboardApp/countryDetails.js';
 import ReactComponents from './components/reactComponents/index.js';
 import './components/TodosList/todos.js';
 
@@ -49,8 +49,7 @@ class App extends React.Component {
         </nav>
 
         {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */
-/*}
+            renders the first one that matches the current URL.*/}
 <Switch>
           <Route path="/reactComponents">
             <ReactComponents />
@@ -62,7 +61,7 @@ class App extends React.Component {
             <CountriesDashboardApp  selectedTheme = {this.state.selectedTheme} onThemeChange = {this.onChangeTheme}/>
           </Route>
           <Route exact path="/countriesDashboardApp/:specifiedCountry">
-            <SpecifiedCountry selectedTheme = {this.state.selectedTheme} onThemeChange = {this.onChangeTheme}/>
+            <CountryDetails selectedTheme = {this.state.selectedTheme} onThemeChange = {this.onChangeTheme}/>
           </Route>
           <Route path="/CarsList">
             <CarsList />
@@ -70,9 +69,9 @@ class App extends React.Component {
           <Route path="/">
             <Home />
           </Route>
-        </Switch> <
-/div> < /
-Router >
+        </Switch> 
+        </div> 
+</Router >
 );
 }
 }
@@ -83,7 +82,7 @@ function Home() {
 }
 
 
-export default App;*/
+export default App;
 
 
 
@@ -128,26 +127,26 @@ export default App;*/
 
 
 //starting procedure
-import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+// import React from "react";
+// import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import HomePage from "./components/HomePage";
-import Page1 from "./components/Page1";
-import "./App.css";
+// import HomePage from "./components/HomePage";
+// import Page1 from "./components/Page1";
+// import "./App.css";
 
-const App = () => {
-  return (
-    <Router basename={process.env.PUBLIC_URL}>
-      <Switch>
-        <Route exact path="/page-1">
-          <Page1 />
-        </Route>
-        <Route path="/">
-          <HomePage />
-        </Route>
-      </Switch>
-    </Router>
-  );
-};
+// const App = () => {
+//   return (
+//     <Router basename={process.env.PUBLIC_URL}>
+//       <Switch>
+//         <Route exact path="/page-1">
+//           <Page1 />
+//         </Route>
+//         <Route path="/">
+//           <HomePage />
+//         </Route>
+//       </Switch>
+//     </Router>
+//   );
+// };
 
-export default App;
+// export default App;

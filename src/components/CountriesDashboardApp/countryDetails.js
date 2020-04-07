@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import './index.css';
 import { TiArrowBack } from "react-icons/ti";
-import DarkLightMode from "./index.js";
+import DarkLightMode from "./DarkLightMode.js";
 class CountryDetails extends React.Component {
     state = {
         specifiedCountry: []
