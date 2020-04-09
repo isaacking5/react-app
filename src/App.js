@@ -5,12 +5,10 @@ import {
   Route,
 }
 from "react-router-dom";
-<<<<<<< HEAD
-import Home from './Home.js'
-=======
 import { observable } from 'mobx';
 import { observer } from 'mobx-react';
->>>>>>> 8cf6d76c3dd8eeb22304901987e4ced79bc8932e
+import { configure } from 'mobx';
+import Home from './Home.js';
 import './components/CarsList/CarsList.css';
 import './components/TodosList/todos.css';
 import './App.css';
@@ -20,16 +18,16 @@ import CountriesDashboardApp from './components/CountriesDashboardApp/index.js';
 import CountryDetails from './components/CountriesDashboardApp/countryDetails.js';
 import ReactComponents from './components/reactComponents/index.js';
 import './components/TodosList/todos.js';
-<<<<<<< HEAD
 import EmojiesGame from './components/EmojiGameApp/index.js';
-=======
 import CounterPage from './components/CounterPage/index.js';
 import theme from './stores/ThemesStore/index.js';
->>>>>>> 8cf6d76c3dd8eeb22304901987e4ced79bc8932e
+
+
+configure({ enforceActions: true });
 
 @observer
 class App extends React.Component {
-  @observable selectedTheme = false
+  // @observable selectedTheme = false
 
   // state = {
   //   selectedTheme: false,
@@ -38,8 +36,8 @@ class App extends React.Component {
 
   onChangeTheme = (mode) => {
     // this.setState({ selectedTheme: mode });
-    this.selectedTheme = mode;
-    // theme.setCurrentTheme(mode);
+    // this.selectedTheme = mode;
+    theme.setCurrentTheme(mode);
   }
   render() {
     return (
@@ -60,10 +58,10 @@ class App extends React.Component {
             <EmojiesGame />
           </Route>
           <Route exact path="/countriesDashboardApp">
-            <CountriesDashboardApp  selectedTheme = {this.selectedTheme} onThemeChange = {this.onChangeTheme}/>
+            <CountriesDashboardApp  selectedTheme = {theme.selectedTheme} onThemeChange = {this.onChangeTheme}/>
           </Route>
           <Route exact path="/countriesDashboardApp/:specifiedCountry">
-            <CountryDetails selectedTheme = {this.selectedTheme} onThemeChange = {this.onChangeTheme}/>
+            <CountryDetails selectedTheme = {theme.selectedTheme} onThemeChange = {this.onChangeTheme}/>
           </Route>
           <Route path="/CarsList">
             <CarsList />
