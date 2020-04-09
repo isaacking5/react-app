@@ -1,28 +1,37 @@
 import React, { Component } from 'react'
 import { observer, inject } from 'mobx-react'
-
-import stores from '../../stores'
-const counterStore = stores.counterStore
+ import {CounterContainer, CounterInputTag, MainHeding, Button} from './styledComponents'
+ import CounterStore from '../../stores/CounterStore/index.js'
+// import counterStore from '../../stores'
+// const counterStore = stores.counterStore
 
 @observer
 class CounterPage extends Component {
   handleIncrement = () => {
-    counterStore.incrementCounter()
+    CounterStore.incrementCounter()
   }
 
+
+
   handleDecrement = () => {
-    if (counterStore.count !== 0) {
-      counterStore.decrementCounter()
+    if (CounterStore.count !== 0) {
+      CounterStore.decrementCounter()
     }
+  }
+  handleOnChange = (event) =>{
+    CounterStore.setCount(Number(event.target.value))
   }
 
   render() {
     return (
-      <div>
-        <h1>{counterStore.count}</h1>
-        <button onClick={this.handleIncrement}>+</button>
-        <button onClick={this.handleDecrement}>-</button>
-      </div>
+      <CounterContainer>
+        <MainHeding>Counter</MainHeding>
+          <div>
+            <Button onClick={this.handleIncrement}>+</Button>
+            <CounterInputTag type="number" value={CounterStore.count} onChange = {this.handleOnChange}/>
+            <Button onClick={this.handleDecrement}>-</Button>
+          </div>
+      </CounterContainer>
     )
   }
 }
