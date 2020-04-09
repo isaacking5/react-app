@@ -3,20 +3,12 @@ class ThemeStore {
     @observable selectedTheme
 
     constructor() {
-        this.selectedTheme = false;
+        this.selectedTheme = null;
     }
 
-    setCurrentTheme = (theme1) => {
-        this.selectedTheme = theme1;
-        // if(this.selectedTheme === false)
-        //     this.selectedTheme = true;
-        // else
-        //     this.selectedTheme = false;
+    setCurrentTheme = (mode) => {
+        this.selectedTheme = mode;
     }
-
-    //   onChangeTheme = (mode) => {
-    //     this.selectedTheme = mode;
-    //   }
 }
 
 const theme = new ThemeStore;

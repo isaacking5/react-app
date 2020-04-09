@@ -45,7 +45,6 @@ class EmojiesGame extends React.Component{
         let shuffledEmojisList = previousEmojiesList.sort(function(){
             return 0.5-Math.random();
           });
-        // console.log(shuffledEmojisList);
     }
 
     incrementScore = () =>{

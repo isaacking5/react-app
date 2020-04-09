@@ -1,46 +1,42 @@
 import React from 'react';
-import './todos.css';
+import {observer} from 'mobx-react'
+import { observable,  toJS} from 'mobx';
+import './todoCSS.css';
 let todosOfUser = [];
-class Todos extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            todos: [],
-            todosInList: false,
-            clearCompletedButton: false,
-        };
-    }
+@observer
+class TodosMObX extends React.Component {
+    @observable todos = [];
+    @observable todosInList = false;
+    @observable clearCompletedButton = false;
 
     completedTask = (idOfTodo) => {
-        const duplicateArr = this.state.todos;
-        duplicateArr[idOfTodo].isCompleted ? duplicateArr[idOfTodo].isCompleted = false : duplicateArr[idOfTodo].isCompleted = true;
-        this.setState({ todos: duplicateArr });
+        todosOfUser[idOfTodo].isCompleted ? todosOfUser[idOfTodo].isCompleted = false : todosOfUser[idOfTodo].isCompleted = true;
+        this.todos = todosOfUser
 
         if (todosOfUser.length === 0)
-            this.setState({ todosInList: false });
-        console.log(todosOfUser);
+            this.todosInList = false
     }
 
     removeTask = (indexOfTodo) => {
         todosOfUser.splice(indexOfTodo, 1);
-        this.setState({ todos: todosOfUser });
+        this.todos = todosOfUser
 
         if (todosOfUser.length === 0)
-            this.setState({ todosInList: false });
+            this.todosInList = false
     }
 
     handleEnterKey = (event) => {
         if (event.key === 'Enter') {
             if (event.target.value !== "") {
                 const todoTask = {
-                    id: (this.state.todos).length + 1,
+                    id: (this.todos).length + 1,
                     task: event.target.value,
                     isCompleted: false,
                 };
                 todosOfUser.push(todoTask);
-                this.setState({ todos: todosOfUser });
+                this.todos = todosOfUser
                 event.target.value = "";
-                this.setState({ todosInList: true });
+                this.todosInList = true
             }
             else
                 alert("Todos Should not be empty");
@@ -48,21 +44,25 @@ class Todos extends React.Component {
     }
 
     allTodos = () => {
-        this.setState({ todos: todosOfUser });
+        this.todos = todosOfUser
     }
 
     activeTodos = () => {
         const activeTodosList = todosOfUser.filter((eachEl) => {
             return (eachEl.isCompleted !== true);
         });
-        this.setState({ todos: activeTodosList });
+        this.todos = activeTodosList
     }
 
     todosLeft = () => {
         let todosCount = 0;
         todosOfUser.forEach((eachEl) => {
+            console.log(toJS(eachEl))
             if (eachEl.isCompleted !== true)
+            {
                 todosCount++;
+                console.log("log")
+            }
         });
         return (todosCount);
     }
@@ -71,30 +71,29 @@ class Todos extends React.Component {
         const completedTodosList = todosOfUser.filter((eachEl) => {
             return (eachEl.isCompleted !== false);
         });
-        this.setState({ todos: completedTodosList });
+        this.todos = completedTodosList
     }
 
     clearCompletedTodos = () => {
         todosOfUser = todosOfUser.filter((eachEl) => {
             return (eachEl.isCompleted !== true);
         });
-        this.setState({ todos: todosOfUser });
+        this.todos = todosOfUser
 
         if (todosOfUser.length === 0)
-            this.setState({ todosInList: false });
+            this.todosInList = false
     }
 
     renderTodoList = () => {
-        // console.log("render",this.state.todos)
-        const todoListItems = this.state.todos.map((eachEl) => {
-            let eachElIndex = (this.state.todos).indexOf(eachEl);
+        const todoListItems = this.todos.map((eachEl) => {
+            let eachElIndex = (this.todos).indexOf(eachEl);
             return (
                 <li key={(eachEl.id).toString()} className="items todo-li-items">
-              <i className= {this.state.todos[eachElIndex].isCompleted ? "fa fa-check-circle co":"fa fa-circle-thin co"} onClick={() => this.completedTask(eachElIndex)}></i>
-              <input type="text" className={this.state.todos[eachElIndex].isCompleted ? "text lineThrough":"text"} defaultValue = {eachEl.task}/>
+              <i className= {this.todos[eachElIndex].isCompleted ? "fa fa-check-circle co":"fa fa-circle-thin co"} onClick={() => this.completedTask(eachElIndex)}></i>
+              <input type="text" className={this.todos[eachElIndex].isCompleted ? "text lineThrough":"text"} defaultValue = {eachEl.task}/>
               <i className="fa fa-close de" onClick={() => this.removeTask(eachElIndex)}></i>
             </li>
-            )
+            );
         });
         return (todoListItems);
     }
@@ -112,7 +111,7 @@ class Todos extends React.Component {
                     <ul className = "todo-ul-tag">
                         {this.renderTodoList()}
                     </ul>
-                    <div className={this.state.todosInList ? "footer-todo-list footer-display": "footer-todo-list footer-none"}>
+                    <div className={this.todosInList ? "footer-todo-list footer-display": "footer-todo-list footer-none"}>
                         <span>{this.todosLeft()} Todos left</span>
                         <div>
                             <button className="filter-buttons" onClick = {this.allTodos}>All</button>
@@ -129,5 +128,5 @@ class Todos extends React.Component {
     }
 }
 
-export { Todos };
+export default TodosMObX
 // ReactDOM.render(<Todos />, document.getElementById("root"));
