@@ -6,11 +6,13 @@ import {
 }
 from "react-router-dom";
 import { observer } from 'mobx-react'
+import {configure} from 'mobx'
 // import { observable } from 'mobx';
 import './App.css';
 import Home from './Home.js'
 import { Todos } from './components/TodosList/todos.js';
 import  TodosMObX  from './components/TodoWithMobX/TodoList.js';
+import TodosMobXmodel from './components/TodoWithStoreModel/index.js'
 import { CarsList } from './components/CarsList';
 import CountriesDashboardApp from './components/CountriesDashboardApp/index.js';
 import CountryDetails from './components/CountriesDashboardApp/countryDetails.js';
@@ -42,6 +44,9 @@ class App extends React.Component {
           </Route>
           <Route path="/TodosMObX">
             <TodosMObX />
+          </Route>
+          <Route path="/TodosMobXmodel">
+            <TodosMobXmodel />
           </Route>
           <Route path="/reactComponents">
             <ReactComponents />

@@ -1,8 +1,9 @@
 import React from 'react';
 import {observer} from 'mobx-react'
-import { observable,  toJS} from 'mobx';
+import { observable,  toJS, action, configure} from 'mobx';
 import './todoCSS.css';
 let todosOfUser = [];
+
 @observer
 class TodosMObX extends React.Component {
     @observable todos = [];
@@ -43,9 +44,11 @@ class TodosMObX extends React.Component {
         }
     }
 
+ 
     allTodos = () => {
         this.todos = todosOfUser
     }
+
 
     activeTodos = () => {
         const activeTodosList = todosOfUser.filter((eachEl) => {
@@ -53,6 +56,7 @@ class TodosMObX extends React.Component {
         });
         this.todos = activeTodosList
     }
+
 
     todosLeft = () => {
         let todosCount = 0;

@@ -1,12 +1,12 @@
-import { observable } from 'mobx'
+import { observable, action } from 'mobx'
 class ThemeStore {
     @observable selectedTheme
 
     constructor() {
         this.selectedTheme = null;
     }
-
-    setCurrentTheme = (mode) => {
+    @action.bound
+    setCurrentTheme(mode) {
         this.selectedTheme = mode;
     }
 }
