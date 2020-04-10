@@ -5,11 +5,9 @@ import {
   Route,
 }
 from "react-router-dom";
-import { observer } from 'mobx-react'
-import {configure} from 'mobx'
-// import { observable } from 'mobx';
-import './App.css';
-import Home from './Home.js'
+import { observer } from 'mobx-react';
+import Home from './Home.js';
+import './App.css'
 import { Todos } from './components/TodosList/todos.js';
 import  TodosMObX  from './components/TodoWithMobX/TodoList.js';
 import TodosMobXmodel from './components/TodoWithStoreModel/index.js'
@@ -17,20 +15,17 @@ import { CarsList } from './components/CarsList';
 import CountriesDashboardApp from './components/CountriesDashboardApp/index.js';
 import CountryDetails from './components/CountriesDashboardApp/countryDetails.js';
 import ReactComponents from './components/reactComponents/index.js';
+import './components/TodosList/todos.js';
 import EmojiesGame from './components/EmojiGameApp/index.js';
 import CounterPage from './components/CounterPage/index.js';
 import theme from './stores/ThemesStore/index.js';
 
+
+// configure({ enforceActions: true });
+
 @observer
 class App extends React.Component {
-  // @observable selectedTheme = false
-  // state = {
-  //   selectedTheme: false,
-  // }
-  
   onChangeTheme = (mode) => {
-    // this.setState({ selectedTheme: mode });
-    // this.selectedTheme = mode;
     theme.setCurrentTheme(mode);
   }
   render() {

@@ -5,6 +5,7 @@ class ThemeStore {
     constructor() {
         this.selectedTheme = null;
     }
+
     @action.bound
     setCurrentTheme(mode) {
         this.selectedTheme = mode;
