@@ -1,11 +1,6 @@
 import React from 'react';
-<<<<<<< HEAD
 import { observer } from 'mobx-react'
 import { observable, toJS } from 'mobx';
-=======
-import {observer} from 'mobx-react'
-import { observable,  toJS, action, configure} from 'mobx';
->>>>>>> c183ddd6eca55986299b6db65c3d22725e77c9ff
 import './todoCSS.css';
 let todosOfUser = [];
 
@@ -49,7 +44,7 @@ class TodosMobX extends React.Component {
         }
     }
 
- 
+
     allTodos = () => {
         this.todos = todosOfUser
     }
