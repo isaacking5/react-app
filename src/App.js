@@ -5,50 +5,35 @@ import {
   Route,
 }
 from "react-router-dom";
-<<<<<<< HEAD
-import { observable } from 'mobx';
+import { observable, configure } from 'mobx';
 import { observer } from 'mobx-react';
-import { configure } from 'mobx';
 import Home from './Home.js';
 import './components/CarsList/CarsList.css';
 import './components/TodosList/todos.css';
-=======
-import { observer } from 'mobx-react'
-// import { observable } from 'mobx';
->>>>>>> c3417a7ac6bdac69d2f34581fbe28436bed0bc9d
 import './App.css';
-import Home from './Home.js'
 import { Todos } from './components/TodosList/todos.js';
-import  TodosMObX  from './components/TodoWithMobX/TodoList.js';
+import TodosMobX from './components/TodoWithMobX/TodoList.js';
 import { CarsList } from './components/CarsList';
 import CountriesDashboardApp from './components/CountriesDashboardApp/index.js';
 import CountryDetails from './components/CountriesDashboardApp/countryDetails.js';
 import ReactComponents from './components/reactComponents/index.js';
-<<<<<<< HEAD
 import './components/TodosList/todos.js';
 import EmojiesGame from './components/EmojiGameApp/index.js';
 import CounterPage from './components/CounterPage/index.js';
 import theme from './stores/ThemesStore/index.js';
 
 
-configure({ enforceActions: true });
-=======
-import EmojiesGame from './components/EmojiGameApp/index.js';
-import CounterPage from './components/CounterPage/index.js';
-import theme from './stores/ThemesStore/index.js';
->>>>>>> c3417a7ac6bdac69d2f34581fbe28436bed0bc9d
+// configure({ enforceActions: true });
 
 @observer
 class App extends React.Component {
   // @observable selectedTheme = false
-<<<<<<< HEAD
 
-=======
->>>>>>> c3417a7ac6bdac69d2f34581fbe28436bed0bc9d
   // state = {
   //   selectedTheme: false,
   // }
-  
+
+
   onChangeTheme = (mode) => {
     // this.setState({ selectedTheme: mode });
     // this.selectedTheme = mode;
@@ -63,19 +48,18 @@ class App extends React.Component {
           <Route path="/counter-page">
             <CounterPage />
           </Route>
-          <Route path="/TodosMObX">
-            <TodosMObX />
-          </Route>
           <Route path="/reactComponents">
             <ReactComponents />
           </Route>
           <Route path="/TodosList"> 
             <Todos />
           </Route>
+          <Route path="/TodosMobX"> 
+            <TodosMobX />
+          </Route>
           <Route path="/EmojiesGame">
             <EmojiesGame />
           </Route>
-
           <Route exact path="/countriesDashboardApp">
             <CountriesDashboardApp  selectedTheme = {theme.selectedTheme} onThemeChange = {this.onChangeTheme}/>
           </Route>
