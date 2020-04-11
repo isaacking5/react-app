@@ -19,7 +19,8 @@ import './components/TodosList/todos.js';
 import EmojiesGame from './components/EmojiGameApp/index.js';
 import CounterPage from './components/CounterPage/index.js';
 import theme from './stores/ThemesStore/index.js';
-
+import EventApp from './components/EventPage/EventApp.js'
+import A from './components/Examples/ProviderExample1.js'
 
 // configure({ enforceActions: true });
 
@@ -37,11 +38,17 @@ class App extends React.Component {
           <Route path="/counter-page">
             <CounterPage />
           </Route>
+          <Route path="/ProviderExample1">
+            <A />
+          </Route>
           <Route path="/TodosMObX">
             <TodosMObX />
           </Route>
           <Route path="/TodosMobXmodel">
             <TodosMobXmodel />
+          </Route>
+          <Route path="/EventApp">
+            <EventApp />
           </Route>
           <Route path="/reactComponents">
             <ReactComponents />
