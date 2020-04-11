@@ -5,6 +5,7 @@ import {
   Route,
 }
 from "react-router-dom";
+<<<<<<< HEAD
 import { observable, configure } from 'mobx';
 import { observer } from 'mobx-react';
 import Home from './Home.js';
@@ -13,6 +14,14 @@ import './components/TodosList/todos.css';
 import './App.css';
 import { Todos } from './components/TodosList/todos.js';
 import TodosMobX from './components/TodoWithMobX/TodoList.js';
+=======
+import { observer } from 'mobx-react';
+import Home from './Home.js';
+import './App.css'
+import { Todos } from './components/TodosList/todos.js';
+import  TodosMObX  from './components/TodoWithMobX/TodoList.js';
+import TodosMobXmodel from './components/TodoWithStoreModel/index.js'
+>>>>>>> c183ddd6eca55986299b6db65c3d22725e77c9ff
 import { CarsList } from './components/CarsList';
 import CountriesDashboardApp from './components/CountriesDashboardApp/index.js';
 import CountryDetails from './components/CountriesDashboardApp/countryDetails.js';
@@ -21,12 +30,18 @@ import './components/TodosList/todos.js';
 import EmojiesGame from './components/EmojiGameApp/index.js';
 import CounterPage from './components/CounterPage/index.js';
 import theme from './stores/ThemesStore/index.js';
+import EventApp from './components/EventPage/EventApp.js'
+import A from './components/Examples/ProviderExample1.js'
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> c183ddd6eca55986299b6db65c3d22725e77c9ff
 // configure({ enforceActions: true });
 
 @observer
 class App extends React.Component {
+<<<<<<< HEAD
   // @observable selectedTheme = false
 
   // state = {
@@ -34,9 +49,9 @@ class App extends React.Component {
   // }
 
 
+=======
+>>>>>>> c183ddd6eca55986299b6db65c3d22725e77c9ff
   onChangeTheme = (mode) => {
-    // this.setState({ selectedTheme: mode });
-    // this.selectedTheme = mode;
     theme.setCurrentTheme(mode);
   }
   render() {
@@ -48,6 +63,21 @@ class App extends React.Component {
           <Route path="/counter-page">
             <CounterPage />
           </Route>
+<<<<<<< HEAD
+=======
+          <Route path="/ProviderExample1">
+            <A />
+          </Route>
+          <Route path="/TodosMObX">
+            <TodosMObX />
+          </Route>
+          <Route path="/TodosMobXmodel">
+            <TodosMobXmodel />
+          </Route>
+          <Route path="/EventApp">
+            <EventApp />
+          </Route>
+>>>>>>> c183ddd6eca55986299b6db65c3d22725e77c9ff
           <Route path="/reactComponents">
             <ReactComponents />
           </Route>
