@@ -26,6 +26,13 @@ import A from './components/Examples/ProviderExample1'
 
 @observer
 class App extends React.Component {
+  // @observable selectedTheme = false
+
+  // state = {
+  //   selectedTheme: false,
+  // }
+
+
   onChangeTheme = (mode) => {
     theme.setCurrentTheme(mode);
   }
@@ -38,28 +45,21 @@ class App extends React.Component {
           <Route path="/counter-page">
             <CounterPage />
           </Route>
-          <Route path="/ProviderExample1">
-            <A />
-          </Route>
-          <Route path="/TodosMObX">
-            <TodosMObX />
-          </Route>
-          <Route path="/TodosMobXmodel">
-            <TodosMobXmodel />
-          </Route>
-          <Route path="/EventApp">
-            <EventApp />
-          </Route>
           <Route path="/reactComponents">
             <ReactComponents />
           </Route>
           <Route path="/TodosList"> 
             <Todos />
           </Route>
+          <Route path="/TodosMobX"> 
+            <TodosMObX />
+          </Route>
+          <Route path="/TodosMobXModel"> 
+            <TodosMobXmodel />
+          </Route>
           <Route path="/EmojiesGame">
             <EmojiesGame />
           </Route>
-
           <Route exact path="/countriesDashboardApp">
             <CountriesDashboardApp  selectedTheme = {theme.selectedTheme} onThemeChange = {this.onChangeTheme}/>
           </Route>

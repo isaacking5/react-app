@@ -1,7 +1,6 @@
 import React from 'react';
 import {observer} from 'mobx-react'
 import { observable,  toJS} from 'mobx';
-
 import './todoCSS.css';
 
 type TodosMObXProps = {
@@ -43,7 +42,7 @@ class TodosMObX extends React.Component{
                     isCompleted: false,
                 };
                 todosOfUser.push(todoTask);
-                this.todos = todosOfUser
+                this.todos = todosOfUser;
                 event.target.value = "";
                 this.todosInList = true
             }
@@ -70,8 +69,7 @@ class TodosMObX extends React.Component{
         let todosCount = 0;
         todosOfUser.forEach((eachEl) => {
             console.log(toJS(eachEl))
-            if (eachEl.isCompleted !== true)
-            {
+            if (eachEl.isCompleted !== true) {
                 todosCount++;
                 console.log("log")
             }

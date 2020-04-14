@@ -7,8 +7,8 @@ class ThemeStore {
     }
 
     @action.bound
-    setCurrentTheme(mode) {
-        this.selectedTheme = mode;
+    setCurrentTheme(theme1) {
+        this.selectedTheme = theme1;
     }
 }
 
