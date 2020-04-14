@@ -6,21 +6,21 @@ import {
 }
 from "react-router-dom";
 import { observer } from 'mobx-react';
-import Home from './Home.js';
+import Home from './Home';
 import './App.css'
-import { Todos } from './components/TodosList/todos.js';
-import  TodosMObX  from './components/TodoWithMobX/TodoList.js';
-import TodosMobXmodel from './components/TodoWithStoreModel/index.js'
+import { Todos } from './components/TodosList/todos';
+import  TodosMObX  from './components/TodoWithMobX/TodoList';
+import TodosMobXmodel from './components/TodoWithStoreModel/index'
 import { CarsList } from './components/CarsList';
-import CountriesDashboardApp from './components/CountriesDashboardApp/index.js';
-import CountryDetails from './components/CountriesDashboardApp/countryDetails.js';
-import ReactComponents from './components/reactComponents/index.js';
-import './components/TodosList/todos.js';
-import EmojiesGame from './components/EmojiGameApp/index.js';
-import CounterPage from './components/CounterPage/index.js';
-import theme from './stores/ThemesStore/index.js';
-import EventApp from './components/EventPage/EventApp.js'
-import A from './components/Examples/ProviderExample1.js'
+import CountriesDashboardApp from './components/CountriesDashboardApp/index';
+import CountryDetails from './components/CountriesDashboardApp/countryDetails';
+import ReactComponents from './components/reactComponents/index';
+import './components/TodosList/todos';
+import EmojiesGame from './components/EmojiGameApp/index';
+import CounterPage from './components/CounterPage/index';
+import theme from './stores/ThemesStore/index';
+import EventApp from './components/EventPage/EventApp'
+import A from './components/Examples/ProviderExample1'
 
 // configure({ enforceActions: true });
 

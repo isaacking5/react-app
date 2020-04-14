@@ -17,7 +17,7 @@ onCompleteTodo(){
 }
 
 @action.bound
-onUpdateTodaTitle(){
+onUpdateTodaTitle(event){
     this.task = event.target.value
 }
 }

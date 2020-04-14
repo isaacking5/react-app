@@ -2,17 +2,21 @@ import React from 'react'
 import { observable } from 'mobx'
 import { observer } from 'mobx-react'
 
+type AddEventProps = {
+addEvent : Function
+}
+
 @observer
-class AddEvent extends React.Component{
-@observable eventName
-@observable eventLocation
+class AddEvent extends React.Component<AddEventProps>{
+@observable eventName : string = ""
+@observable eventLocation : string = ""
 
 constuctor(){
-    this.eventName = ""
+    this.eventName= ""
     this.eventLocation = ""
 }
 
-onAddEvent = () =>{
+onAddEvent = (event) =>{
     const {addEvent} = this.props
     addEvent(this.eventName, this.eventLocation)
     event.preventDefault()
@@ -20,11 +24,11 @@ onAddEvent = () =>{
     this.eventLocation=""
 }
 
-onChangeEventName = () =>{
+onChangeEventName = (event) =>{
     this.eventName = event.target.value
 }
 
-onChangeEventLocation = () =>{
+onChangeEventLocation = (event) =>{
     this.eventLocation = event.target.value
 }
 

@@ -1,8 +1,8 @@
-import { observable, action, computed, toJS } from "mobx";
+import { observable, action, computed} from "mobx";
 import EventModel from "../EventModel";
 
 class StoreEvent{
-    @observable events = [];
+    @observable events : any = [];
 
     @action.bound
     onAddEvent(eventName, eventLocation){
@@ -17,11 +17,11 @@ class StoreEvent{
 
     @computed
     get noOfEvents(){
-
+        return ""
     }
 
 }
 
-const EventStore = new StoreEvent
+const EventStore = new StoreEvent()
 
 export default EventStore

@@ -2,8 +2,8 @@ import { observable, action } from 'mobx'
 class ThemeStore {
     @observable selectedTheme
 
-    constructor() {
-        this.selectedTheme = null;
+    constructor(){
+        this.selectedTheme = null
     }
 
     @action.bound
@@ -12,5 +12,5 @@ class ThemeStore {
     }
 }
 
-const theme = new ThemeStore;
+const theme = new ThemeStore();
 export default theme;

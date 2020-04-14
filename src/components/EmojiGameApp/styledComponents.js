@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 import tw from 'tailwind.macro';
-import React from 'react';
 
 const NavBarContainer = styled.div`
     ${tw `flex justify-between p-6  bg-gray-100`};

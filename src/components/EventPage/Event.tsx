@@ -1,10 +1,18 @@
 import React from 'react'
-import {observable, toJS} from 'mobx'
+import {observable} from 'mobx'
 import { observer } from 'mobx-react'
+import EventModel from '../../stores/EventModel'
+
+type EventsProps = {
+    eachEvent : EventModel //any
+    EventList : Array<object>
+    onDeleteEvent : Function
+
+}
 
 @observer
-class Events extends React.Component{
-    @observable isEditEvent
+class Events extends React.Component <EventsProps>{
+    @observable isEditEvent 
     @observable eventName
     @observable eventLocation
 

@@ -1,13 +1,19 @@
 import React from 'react'
-import Events from './Event.js'
-import {toJS} from 'mobx'
 import {observer} from 'mobx-react'
 
+import Events from './Event'
+import EventModel from "../../stores/EventModel"
+
+type EventListProps = {
+    eventList : Array<EventModel>
+    onDelete : Function
+}
+
 @observer
-class EventList extends React.Component{
+class EventList extends React.Component<EventListProps>{
     render(){
         const {eventList, onDelete} = this.props
-        console.log(toJS("eventList",eventList))
+        // console.log(toJS("eventList",eventList))
         const listOfEvents = eventList.map((eachEl)=>{
             return (
                 <Events eachEvent = {eachEl} onDeleteEvent = {onDelete} EventList={eventList}/>

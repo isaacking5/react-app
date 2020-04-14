@@ -1,5 +1,13 @@
 import React from 'react'
-class Footer extends React.Component{
+type footerProps = {
+    allTodos:Function;
+    completedTodos:Function;
+    clearCompletedTodos : any;
+    activeTodos : Function;
+    todosInList : boolean;
+    activeTodosCount : number;
+}
+class Footer extends React.Component <footerProps>{
     render(){
         const {allTodos, completedTodos, clearCompletedTodos, activeTodos, todosInList, activeTodosCount} = this.props
         return(

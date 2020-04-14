@@ -1,12 +1,20 @@
 import React from 'react';
 import {observer} from 'mobx-react'
-import { observable,  toJS, action, configure} from 'mobx';
+import { observable,  toJS} from 'mobx';
+
 import './todoCSS.css';
-let todosOfUser = [];
+
+type TodosMObXProps = {
+        id:number
+        task : string
+        isCompleted : boolean
+}
+
+let todosOfUser : Array<TodosMObXProps> = [];
 
 @observer
-class TodosMObX extends React.Component {
-    @observable todos = [];
+class TodosMObX extends React.Component{
+    @observable todos : Array<TodosMObXProps> = [];
     @observable todosInList = false;
     @observable clearCompletedButton = false;
 
@@ -30,7 +38,7 @@ class TodosMObX extends React.Component {
         if (event.key === 'Enter') {
             if (event.target.value !== "") {
                 const todoTask = {
-                    id: (this.todos).length + 1,
+                    id : (this.todos).length + 1,
                     task: event.target.value,
                     isCompleted: false,
                 };
@@ -94,8 +102,7 @@ class TodosMObX extends React.Component {
             return (
                 <li key={(eachEl.id).toString()} className="items todo-li-items">
               <i className= {this.todos[eachElIndex].isCompleted ? "fa fa-check-circle co":"fa fa-circle-thin co"} onClick={() => this.completedTask(eachElIndex)}></i>
-              <input type="text" className={this.todos[eachElIndex].isCompleted ? "text lineThrough":"text"} defaultValue = {eachEl.task}/>
-              <i className="fa fa-close de" onClick={() => this.removeTask(eachElIndex)}></i>
+              <input type="text" className={this.todos[eachElIndex].isCompleted ? "text lineThrough":"text"} defaultValue = {eachEl.task}/>              <i className="fa fa-close de" onClick={() => this.removeTask(eachElIndex)}></i>
             </li>
             );
         });

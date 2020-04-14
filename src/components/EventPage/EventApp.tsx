@@ -1,8 +1,12 @@
 import React from 'react'
-// import ../../stores/EventStore/index.js
-import AddEvent from './AddEvent.js'
-import EventList from './EventList.js'
-import EventStore from '../../stores/EventStore/index.js'
+// import ../../stores/EventStore/index.ts
+
+import EventStore from '../../stores/EventStore/index'
+
+import AddEvent from './AddEvent'
+import EventList from './EventList'
+
+
 class EventApp extends React.Component{
     onAddEvent = (eventName, eventLocation) =>{
         EventStore.onAddEvent(eventName, eventLocation)

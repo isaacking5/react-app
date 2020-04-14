@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 import tw from 'tailwind.macro';
-import React from 'react';
 
 const CounterContainer = styled.div`
     ${tw`h-screen flex justify-center items-center flex-col`}

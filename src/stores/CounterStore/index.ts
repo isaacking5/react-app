@@ -1,5 +1,4 @@
 import { observable, action } from 'mobx'
-import { act } from 'react-dom/test-utils';
 
 class CounterStoreApp { 
    @observable count =  0
@@ -8,7 +7,7 @@ class CounterStoreApp {
    incrementCounter() {
       this.count = this.count + 1
    } 
-
+ 
    @action.bound
    decrementCounter() {
       this.count = this.count - 1
@@ -20,5 +19,5 @@ class CounterStoreApp {
    }
 }
 
-const CounterStore = new CounterStoreApp
+const CounterStore = new CounterStoreApp()
 export default CounterStore

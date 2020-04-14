@@ -1,8 +1,15 @@
-import { observable,  toJS, action, computed} from 'mobx';
-import TodoModel from '../../stores/todoModel/index.js'
+import { observable, action, computed} from 'mobx';
+
+import TodoModel from '../../stores/todoModel/index'
+
+type todoTaskProps = {
+    id : number
+    task : string
+    isCompleted : boolean
+}
 
 class TodoStore{
-    @observable todosOfUser = [];
+    @observable todosOfUser:Array<todoTaskProps> = [];
     @observable selectedFilter = "All";  //"Completed", "Active"
     @observable todosInList = false
 
@@ -17,7 +24,7 @@ class TodoStore{
                 };
                 const todoModel = new TodoModel(todoTask)
                 this.todosOfUser.push(todoModel);
-                this.todos = this.todosOfUser
+                // this.todos = this.todosOfUser
                 event.target.value = "";
                 this.todosInList = true
             }
@@ -29,7 +36,7 @@ class TodoStore{
     @action.bound
     onRemoveTodo(indexOfTodo){
         todoStore.todosOfUser.splice(indexOfTodo, 1);
-        this.todos = todoStore.todosOfUser
+        // this.todos = todoStore.todosOfUser
 
         if (todoStore.todosOfUser.length === 0)
             this.todosInList = false
@@ -85,5 +92,5 @@ class TodoStore{
     }
 }
 
-const todoStore = new TodoStore
+const todoStore = new TodoStore()
 export default todoStore   

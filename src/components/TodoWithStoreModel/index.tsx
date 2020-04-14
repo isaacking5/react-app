@@ -1,10 +1,12 @@
 import React from 'react';
 import {observer} from 'mobx-react'
-import { observable,  toJS, action, configure, reaction} from 'mobx';
+import {reaction} from 'mobx';
+
+import todoStore from '../../stores/todoStore/index'
+
 import './todo.css';
-import TodoList from './todoList.js'
-import Footer from './footer.js'
-import todoStore from '../../stores/todoStore/index.js'
+import TodoList from './todoList'
+import Footer from './footer'
 
 @observer
 class TodosMobXmodel extends React.Component {

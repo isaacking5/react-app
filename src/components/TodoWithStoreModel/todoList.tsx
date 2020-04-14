@@ -1,9 +1,14 @@
 import React from 'react'
-import {toJS} from 'mobx'
 import { observer } from 'mobx-react';
 
+
+type TodoListProps = {
+  todos: Array<any>
+  removeTask : Function
+}
+
 @observer
-class TodoList extends React.Component{
+class TodoList extends React.Component <TodoListProps>{
 renderTodoList = () => {
   const {todos, removeTask} = this.props
         const todoListItems = todos.map((eachEl) => {

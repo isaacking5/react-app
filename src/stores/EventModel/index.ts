@@ -2,8 +2,8 @@ import { observable, action } from "mobx"
 
 class EventModel{
     id
-    @observable name
-    @observable location
+    @observable name : string
+    @observable location :string
 
     constructor(eventName, eventLocation){
         this.id = Math.random.toString()
@@ -14,8 +14,8 @@ class EventModel{
 
     @action.bound
     onUpdateEventDetails(eventName, eventLocation){
-        this.eventName = eventName;
-        this.eventLocation = eventLocation;
+        this.name = eventName;
+        this.location = eventLocation;
 
     }
 }

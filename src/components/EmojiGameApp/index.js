@@ -42,7 +42,7 @@ class EmojiesGame extends React.Component{
             if(EachEl.id === clickedEmoji.id)
                 EachEl.isClicked = true;
         });
-        let shuffledEmojisList = previousEmojiesList.sort(function(){
+        previousEmojiesList.sort(function(){
             return 0.5-Math.random();
           });
     }
