@@ -16,6 +16,7 @@ import CountriesDashboardApp from './components/CountriesDashboardApp/index';
 import CountryDetails from './components/CountriesDashboardApp/countryDetails';
 import ReactComponents from './components/reactComponents/index';
 import './components/TodosList/todos';
+import GridMemoryGame from './components/GridMemoryGame/GridMemoryGame'
 import EmojiesGame from './components/EmojiGameApp/index';
 import CounterPage from './components/CounterPage/index';
 import theme from './stores/ThemesStore/index';
@@ -51,11 +52,20 @@ class App extends React.Component {
           <Route path="/TodosList"> 
             <Todos />
           </Route>
+          <Route path="/EventApp"> 
+            <EventApp />
+          </Route>
+          <Route path="/provider-example"> 
+            <A />
+          </Route>
           <Route path="/TodosMobX"> 
             <TodosMObX />
           </Route>
           <Route path="/TodosMobXModel"> 
             <TodosMobXmodel />
+          </Route>
+          <Route path="/grid-memory-game">
+            <GridMemoryGame />
           </Route>
           <Route path="/EmojiesGame">
             <EmojiesGame />
