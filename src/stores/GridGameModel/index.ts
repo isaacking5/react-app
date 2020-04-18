@@ -1,6 +1,6 @@
 import { observable } from "mobx";
 
-class GridCell{
+class GridCellModel{
     @observable id : string
     @observable isHidden : boolean
 
@@ -10,4 +10,4 @@ class GridCell{
     }
 }
 
-export default GridCell
+export default GridCellModel
