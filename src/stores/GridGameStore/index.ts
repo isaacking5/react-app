@@ -37,7 +37,7 @@ class GridGameStore {
                 setTimeout(()=> this.goToNextLevelAndUpdateCells(), 500)
             }
             return true
-        }git
+        }
            
         else{
             setTimeout(()=> this.resetGame(), 500)

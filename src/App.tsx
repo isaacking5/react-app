@@ -11,6 +11,7 @@ import './App.css'
 import { Todos } from './components/TodosList/todos';
 import  TodosMObX  from './components/TodoWithMobX/TodoList';
 import TodosMobXmodel from './components/TodoWithStoreModel/index'
+import TodosWithNetWorkCall from './components/TodoWithNetWorkCall/index'
 import { CarsList } from './components/CarsList';
 import CountriesDashboardApp from './components/CountriesDashboardApp/index';
 import CountryDetails from './components/CountriesDashboardApp/countryDetails';
@@ -63,6 +64,9 @@ class App extends React.Component {
           </Route>
           <Route path="/TodosMobXModel"> 
             <TodosMobXmodel />
+          </Route>
+          <Route path="/Todos-with-network-call"> 
+            <TodosWithNetWorkCall />
           </Route>
           <Route path="/grid-memory-game">
             <GridMemoryGame />
