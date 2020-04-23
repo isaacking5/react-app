@@ -5,7 +5,7 @@ import {
   Route,
 }
 from "react-router-dom";
-import { observer } from 'mobx-react';
+import { observer, Provider } from 'mobx-react';
 import Home from './Home';
 import './App.css'
 import { Todos } from './components/TodosList/todos';
@@ -23,6 +23,8 @@ import CounterPage from './components/CounterPage/index';
 import theme from './stores/ThemesStore/index';
 import EventApp from './components/EventPage/EventApp'
 import A from './components/Examples/ProviderExample1'
+import UsersPage from "./components/UsersPage";
+import stores from "./stores";
 
 // configure({ enforceActions: true });
 
@@ -40,7 +42,8 @@ class App extends React.Component {
   }
   render() {
     return (
-      <Router basename={process.env.PUBLIC_URL}>
+      <Provider {...stores}>
+              <Router basename={process.env.PUBLIC_URL}>
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL.*/}
 <Switch>
@@ -65,15 +68,14 @@ class App extends React.Component {
           <Route path="/TodosMobXModel"> 
             <TodosMobXmodel />
           </Route>
-          <Route path="/Todos-with-network-call"> 
-            <TodosWithNetWorkCall />
-          </Route>
+          <Route exact path="/Todos-with-network-call" component={TodosWithNetWorkCall} /> 
           <Route path="/grid-memory-game">
             <GridMemoryGame />
           </Route>
           <Route path="/EmojiesGame">
             <EmojiesGame />
           </Route>
+          <Route exact path="/UserPage" component = {UsersPage}/>
           <Route exact path="/countriesDashboardApp">
             <CountriesDashboardApp  selectedTheme = {theme.selectedTheme} onThemeChange = {this.onChangeTheme}/>
           </Route>
@@ -88,6 +90,8 @@ class App extends React.Component {
           </Route>
         </Switch> 
 </Router >
+</Provider>
+
     );
   }
 }

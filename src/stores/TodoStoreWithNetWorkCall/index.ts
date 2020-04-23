@@ -1,6 +1,8 @@
 import { observable, action, computed} from 'mobx';
-
+import TodoServices from '../../services/TodoServices/index.api'
 import TodoModel from '../TodoModelWithNetworkCall/index'
+import { API_INITIAL } from "@ib/api-constants";
+import { bindPromiseWithOnSuccess } from "@ib/mobx-promise";
 
 type todoTaskProps = {
     id : number
@@ -10,20 +12,60 @@ type todoTaskProps = {
 
 class TodoStore{
     @observable todosOfUser:Array<todoTaskProps> = [];
-    @observable selectedFilter = "All";  //"Completed", "Active"
-    @observable todosInList = false
+    @observable selectedFilter;  //All,"Completed", "Active"
+    @observable todosInList
+    @observable getTodosApiStatus
+    @observable getTodosApiError
+    todoServices
+
+    constructor(todoServices){
+        this.todoServices = todoServices
+        this.init()
+    }
 
     @action.bound
-    updateTodoWithNetworkCall(fetchedData){
-       fetchedData.forEach((eachEl)=>{
-        if(this.todosOfUser.length<6)
-        {
-            const todoModel = new TodoModel(eachEl)
-            this.todosOfUser.push(todoModel);
-        }
-       })
-       this.todosInList = true;
+    setTodoAPIResponse(todoResponse){
+        this.todosInList = true
+        todoResponse.forEach((eachEl)=>{
+            // if(this.todosOfUser.length < 6){
+                const todoModel = new TodoModel(eachEl)
+                this.todosOfUser.push(todoModel)
+            // }
+        })
     }
+
+    @action.bound
+    setTodoAPIStatus(apiStatus){
+        this.getTodosApiStatus = apiStatus
+    }
+
+    @action.bound
+    setTodoAPIError(apiError){
+        this.getTodosApiError = apiError
+    }
+
+    @action.bound
+    getTodoAPI(){
+        const todoServices = this.todoServices.getTodosAPI()
+        return bindPromiseWithOnSuccess(todoServices)
+        .to(this.setTodoAPIStatus, this.setTodoAPIResponse)
+        .catch(this.setTodoAPIError)
+    }
+
+
+    @action.bound
+    init(){
+        this.getTodosApiStatus = API_INITIAL
+        this.getTodosApiError = null
+        this.selectedFilter = 'All'
+        this.todosInList = false
+    }
+
+    @action.bound
+    clearStore(){
+        this.init()
+    }
+
     @action.bound
     onAddTodo(event){
         if (event.key === 'Enter') {
@@ -46,10 +88,9 @@ class TodoStore{
 
     @action.bound
     onRemoveTodo(indexOfTodo){
-        todoStore.todosOfUser.splice(indexOfTodo, 1);
-        // this.todos = todoStore.todosOfUser
+        this.todosOfUser.splice(indexOfTodo, 1);
 
-        if (todoStore.todosOfUser.length === 0)
+        if (this.todosOfUser.length === 0)
             this.todosInList = false
     }
 
@@ -103,5 +144,7 @@ class TodoStore{
     }
 }
 
-const todoStore = new TodoStore()
-export default todoStore   
+// const todoServices = new TodoServices
+
+// const todoStore = new TodoStore(todoServices)
+export default TodoStore   

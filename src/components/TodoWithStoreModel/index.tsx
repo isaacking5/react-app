@@ -1,6 +1,6 @@
 import React from 'react';
 import {observer} from 'mobx-react'
-import {reaction} from 'mobx';
+import {reaction, toJS} from 'mobx';
 
 import todoStore from '../../stores/todoStore/index'
 
@@ -10,8 +10,8 @@ import Footer from './footer'
 
 @observer
 class TodosMobXmodel extends React.Component {
-    removeTask = (indexOfTodo) => {
-        todoStore.onRemoveTodo(indexOfTodo)
+    removeTask = (clickedTodoId) => {
+        todoStore.onRemoveTodo(clickedTodoId)
     }
 
     handleEnterKey = (event) => {
@@ -32,6 +32,7 @@ class TodosMobXmodel extends React.Component {
 //recation end
     render() {
         const selectedTodoList = todoStore.filteredTodos
+        // console.log("render todo",toJS(selectedTodoList))
         return (
             <div className = "todo-list-body-container">
             <div className = "main-todo-conatiner">

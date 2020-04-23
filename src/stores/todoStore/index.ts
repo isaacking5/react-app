@@ -1,4 +1,4 @@
-import { observable, action, computed} from 'mobx';
+import { observable, action, computed, toJS} from 'mobx';
 
 import TodoModel from '../../stores/todoModel/index'
 
@@ -18,7 +18,7 @@ class TodoStore{
         if (event.key === 'Enter') {
             if (event.target.value !== "") {
                 const todoTask = {
-                    id: (this.todosOfUser).length + 1,
+                    id: Math.random().toString(),
                     task: event.target.value,
                     isCompleted: false,
                 };
@@ -34,8 +34,11 @@ class TodoStore{
     }
 
     @action.bound
-    onRemoveTodo(indexOfTodo){
-        todoStore.todosOfUser.splice(indexOfTodo, 1);
+    onRemoveTodo(clickedTodoId){
+        this.todosOfUser = this.todosOfUser.filter((eachEl)=>{
+            return clickedTodoId !== eachEl.id
+        })
+        //this.todosOfUser.splice(clickedTodoId, 1);
         // this.todos = todoStore.todosOfUser
 
         if (todoStore.todosOfUser.length === 0)

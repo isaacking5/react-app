@@ -1,74 +1,72 @@
 import React from 'react';
-import { Offline, Online } from "react-detect-offline";
-import {observer} from 'mobx-react'
+import {observer, inject} from 'mobx-react'
 import {observable, reaction, toJS} from 'mobx';
-import Loader from 'react-loader-spinner'
 
-import todoStore from '../../stores/TodoStoreWithNetWorkCall/index'
 
 import './todo.css';
 import TodoList from './todoList'
 import Footer from './footer'
+import LoadingWrapperWithFailure from "../common/LoadingWrapperWithFailure";
+import NoDataView from "../common/NoDataView";
+import TodoStore from "../../stores/TodoStoreWithNetWorkCall";
 
+type TodosWithNetWorkCallProps = {
+    todoStore : any
+}
+
+@inject("todoStore")
 @observer
-class TodosWithNetWorkCall extends React.Component {
-
-    @observable isLoading = true
-    @observable isNetWorkCall = true
-    @observable isOnline =  window.navigator.onLine
+class TodosWithNetWorkCall extends React.Component<TodosWithNetWorkCallProps> {
     componentDidMount = () =>{
-        fetch("https://jsonplaceholder.typicode.com/todos")
-        .then(response => response.json())
-        .then(json => {
-            // todoStore.updateTodoWithNetworkCall(json)
-            setTimeout(()=>{
-                this.isLoading = false
-                todoStore.updateTodoWithNetworkCall(json)
-            } ,1000)
-        })
-        .catch(response =>{
-            this.isNetWorkCall = false
-            this.isLoading = false
-        })
+       this.doNetworkCalls()
+    }
+
+    getTodoStore = () =>{
+        return this.props.todoStore
+    }
+
+    doNetworkCalls = () =>{
+        this.getTodoStore().getTodoAPI()
     }
     removeTask = (indexOfTodo) => {
-        todoStore.onRemoveTodo(indexOfTodo)
+        this.getTodoStore().onRemoveTodo(indexOfTodo)
     }
 
     handleEnterKey = (event) => {
-        this.isNetWorkCall = true
-        todoStore.onAddTodo(event)
+        this.getTodoStore().onAddTodo(event)
     }
     clearCompletedTodos = () => {
-        todoStore.onClearCompleted()
+        this.getTodoStore().onClearCompleted()
     }
-
-    loadPageWhenOnline = () =>{
-        this.isOnline =  window.navigator.onLine
-        if(this.isOnline)
-        {
-            this.isLoading = true
-            this.isNetWorkCall = true
-            this.componentDidMount()
-        }
-    }
-
 // reaction HandsOn
+    
     // todoAdd = reaction(()=>todoStore.todosOfUser.length , (length)=>{console.log("todosLength", length)})\
-    afterCompleteAllTodos = reaction(()=>todoStore.todosOfUser.filter(eachEl =>{
+    afterCompleteAllTodos = reaction(()=>this.props.todoStore.todosOfUser.filter(eachEl =>{
         return eachEl.completed === true
-    }), (task)=> {if(todoStore.todosOfUser.length === task.length)
+    }), (task)=> {if(this.props.todoStore.todosOfUser.length === task.length)
                     alert("congratulation all todos are completed");
     })
-    
+
 //recation end
+
+
+
+    renderSuccessUI = observer(() =>{
+        const selectedTodoList = this.getTodoStore().filteredTodos
+        const {todosOfUser} = this.getTodoStore()
+        if(todosOfUser.length === 0){
+            return <NoDataView />
+        }
+       return <TodoList todos = {selectedTodoList}  removeTask = {this.removeTask}/>
+    })
+    
     render() {
-        console.log(this.isOnline)
-        const selectedTodoList = todoStore.filteredTodos
+        console.log("render")
+        const {getTodosApiStatus, getTodosApiError, todosOfUser, todosInList} = this.getTodoStore()
+        console.log(todosOfUser)
         return (
             <div className = "todo-list-body-container">
-            {this.isOnline?
-              (<div className = "main-todo-conatiner">
+              <div className = "main-todo-conatiner">
                 <div className="todo-list">
                     <h1 className = "main-heading">Todos</h1>
                 </div>
@@ -76,24 +74,19 @@ class TodosWithNetWorkCall extends React.Component {
                     <input className="adding-elements" type="text" placeholder = "What need to be Done...!"
                     onKeyDown = {this.handleEnterKey}
                     />
-                    { this.isLoading?
-                        <Loader type="ThreeDots" color="#00BFFF" className="w-80 h-80 flex justify-center"/>:
-                        this.isNetWorkCall?
-                        <TodoList todos = {selectedTodoList}  removeTask = {this.removeTask}/>:
-                        <div className = "m-12 text-center text-2xl">No data found..!</div>
-                    }
-                    <Footer activeTodosCount = {todoStore.activeTodosCount} todosInList = {todoStore.todosInList} 
-                        activeTodos = {todoStore.onChnageSelectedFilters} 
-                        allTodos = {todoStore.onChnageSelectedFilters} 
-                        completedTodos = {todoStore.onChnageSelectedFilters} 
+                    <LoadingWrapperWithFailure
+                        apiStatus = {getTodosApiStatus}
+                        apiError = {getTodosApiError}
+                        onRetryClick = {this.doNetworkCalls}
+                        renderSuccessUI = {this.renderSuccessUI}
+                    />
+                    <Footer activeTodosCount = {this.getTodoStore().activeTodosCount}  todosInList = {todosInList}
+                        activeTodos = {this.getTodoStore().onChnageSelectedFilters} 
+                        allTodos = {this.getTodoStore().onChnageSelectedFilters} 
+                        completedTodos = {this.getTodoStore().onChnageSelectedFilters} 
                         clearCompletedTodos = {this.clearCompletedTodos} />
                 </div>
-            </div>):
-            (<div>
-                <p className = "text-2xl m-4 font-semibold subpixel-antialiased">Network Error</p>
-                <button className = "text-gray-100 text-xl p-2 pr-6 pl-6 ml-12 border rounded-md bg-blue-500 shadow font-semibold" onClick={this.loadPageWhenOnline}>Retry</button>
-            </div>)
-            }
+            </div>
             </div>
         );
     }

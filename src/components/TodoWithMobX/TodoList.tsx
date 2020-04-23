@@ -100,7 +100,8 @@ class TodosMObX extends React.Component{
             return (
                 <li key={(eachEl.id).toString()} className="items todo-li-items">
               <i className= {this.todos[eachElIndex].isCompleted ? "fa fa-check-circle co":"fa fa-circle-thin co"} onClick={() => this.completedTask(eachElIndex)}></i>
-              <input type="text" className={this.todos[eachElIndex].isCompleted ? "text lineThrough":"text"} defaultValue = {eachEl.task}/>              <i className="fa fa-close de" onClick={() => this.removeTask(eachElIndex)}></i>
+              <input type="text" className={this.todos[eachElIndex].isCompleted ? "text lineThrough":"text"} defaultValue = {eachEl.task}/>              
+              <i className="fa fa-close de" onClick={() => this.removeTask(eachElIndex)}></i>
             </li>
             );
         });

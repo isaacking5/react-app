@@ -6,7 +6,7 @@ class TodoModel{
 @observable isCompleted
 
 constructor (todoTask){
-        this.id = todoTask.id.toString()
+        this.id = todoTask.id
         this.task = todoTask.task
         this.isCompleted = todoTask.isCompleted
     }
@@ -17,7 +17,7 @@ onCompleteTodo(){
 }
 
 @action.bound
-onUpdateTodaTitle(event){
+onUpdateTodoTitle(event){
     this.task = event.target.value
 }
 }

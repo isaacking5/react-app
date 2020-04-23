@@ -1,6 +1,8 @@
 import React from 'react'
 import { observer } from 'mobx-react';
 
+import EachTodo from './eachTodo'
+
 
 type TodoListProps = {
   todos: Array<any>
@@ -12,13 +14,8 @@ class TodoList extends React.Component <TodoListProps>{
 renderTodoList = () => {
   const {todos, removeTask} = this.props
         const todoListItems = todos.map((eachEl) => {
-            let eachElIndex = (todos).indexOf(eachEl);
             return (
-            <li key={(eachEl.id).toString()} className="items todo-li-items">
-              <i className= {todos[eachElIndex].isCompleted ? "fa fa-check-circle co":"fa fa-circle-thin co"} onClick={eachEl.onCompleteTodo}></i>
-              <input type="text" className={todos[eachElIndex].isCompleted ? "text lineThrough":"text"} defaultValue = {eachEl.task} onChange = {eachEl.onUpdateTodaTitle}/>
-              <i className="fa fa-close de" onClick={() => removeTask(eachElIndex)}></i>
-            </li>
+              <EachTodo removeTask = {removeTask} eachTodo = {eachEl} key={Math.random()}/>
             );
         });
         return (todoListItems);
