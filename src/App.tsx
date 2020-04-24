@@ -7,6 +7,8 @@ import {
 from "react-router-dom";
 import { observer, Provider } from 'mobx-react';
 import Home from './Home';
+import LoginPage from './loginPage'
+import SideDrawer from './components/SideDrawer/index'
 import './App.css'
 import { Todos } from './components/TodosList/todos';
 import  TodosMObX  from './components/TodoWithMobX/TodoList';
@@ -56,8 +58,11 @@ class App extends React.Component {
           <Route path="/TodosList"> 
             <Todos />
           </Route>
-          <Route path="/EventApp"> 
+          <Route path="/EventApp">
             <EventApp />
+          </Route>
+          <Route path="/side-drawer"> 
+            <SideDrawer />
           </Route>
           <Route path="/provider-example"> 
             <A />
@@ -85,8 +90,11 @@ class App extends React.Component {
           <Route path="/CarsList">
             <CarsList />
           </Route>
-          <Route path="/">
+          <Route path="/Home">
             <Home />
+          </Route>
+          <Route path="/">
+            <LoginPage />
           </Route>
         </Switch> 
 </Router >
