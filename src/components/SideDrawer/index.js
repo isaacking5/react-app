@@ -21,9 +21,11 @@ class SideDrawer extends React.Component{
     render() {
       return (
         <div>
-          <ButtonToolbar>
-            <Button onClick={this.toggleDrawer}>Open</Button>
-          </ButtonToolbar>
+          {/* <ButtonToolbar> */}
+          <div>
+            <button onClick={this.toggleDrawer}>Open</button>
+          </div>
+          {/* </ButtonToolbar> */}
           <Drawer
             show={this.state.show}
             onHide={this.close}
@@ -35,8 +37,8 @@ class SideDrawer extends React.Component{
               <div>Be happy, make everyone happy...!</div>
             </Drawer.Body>
             <Drawer.Footer>
-              <Button onClick={this.close} appearance="primary">Confirm</Button>
-              <Button onClick={this.close} appearance="subtle">Cancel</Button>
+              <button onClick={this.close} appearance="primary">Confirm</button>
+              <button onClick={this.close} appearance="subtle">Cancel</button>
             </Drawer.Footer>
           </Drawer>
         </div>

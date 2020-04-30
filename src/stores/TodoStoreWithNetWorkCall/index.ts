@@ -120,6 +120,7 @@ class TodoStore{
         return count;
     }
 
+    @computed
     get filteredTodos(){
         let selectedTodoFilter
         switch(this.selectedFilter)

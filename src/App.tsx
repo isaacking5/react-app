@@ -8,7 +8,8 @@ from "react-router-dom";
 import { observer, Provider } from 'mobx-react';
 import Home from './Home';
 import LoginPage from './loginPage'
-import SideDrawer from './components/SideDrawer/index'
+import AuthRoutes from './Authentication/routes' 
+import ProductsRoute from './E-commerceSite/routes'
 import './App.css'
 import { Todos } from './components/TodosList/todos';
 import  TodosMObX  from './components/TodoWithMobX/TodoList';
@@ -26,25 +27,21 @@ import theme from './stores/ThemesStore/index';
 import EventApp from './components/EventPage/EventApp'
 import A from './components/Examples/ProviderExample1'
 import UsersPage from "./components/UsersPage";
-import stores from "./stores";
+import utilityStore from "./stores";
+import AuthStore from './Authentication/stores'
+import ProductsStore from './E-commerceSite/stores'
 
 // configure({ enforceActions: true });
 
 @observer
 class App extends React.Component {
-  // @observable selectedTheme = false
-
-  // state = {
-  //   selectedTheme: false,
-  // }
-
 
   onChangeTheme = (mode) => {
     theme.setCurrentTheme(mode);
   }
   render() {
     return (
-      <Provider {...stores}>
+      <Provider {...utilityStore}{...AuthStore}{...ProductsStore}>
               <Router basename={process.env.PUBLIC_URL}>
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL.*/}
@@ -60,9 +57,6 @@ class App extends React.Component {
           </Route>
           <Route path="/EventApp">
             <EventApp />
-          </Route>
-          <Route path="/side-drawer"> 
-            <SideDrawer />
           </Route>
           <Route path="/provider-example"> 
             <A />
@@ -93,9 +87,11 @@ class App extends React.Component {
           <Route path="/Home">
             <Home />
           </Route>
-          <Route path="/">
+          {ProductsRoute}
+          {AuthRoutes}
+          {/* <Route path="/">
             <LoginPage />
-          </Route>
+          </Route> */}
         </Switch> 
 </Router >
 </Provider>
