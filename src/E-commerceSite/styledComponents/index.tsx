@@ -10,7 +10,10 @@ export const CartIcon = styled.div`
    box-shadow: 0 2px 4px 0 rgba(0, 0, 1.0, 0.2), 0 4px 20px 0 rgba(0, 0, 5.0, 0.15);
 `
 export const SizeSelectedBlock = styled.div`
-    ${tw`flex w-3/12 flex-col`}
+    ${tw`w-3/12`}
+ `
+ export const SizeFixedBlock = styled.div`
+   ${tw`fixed w-3/12`}
  `
 
  export const ProductDisplayContainer = styled.div`

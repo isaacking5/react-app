@@ -1,5 +1,5 @@
 import React from 'react'
-import  { SizeSelectedBlock, Sizes, SelectSize} from '../../styledComponents'
+import  { SizeSelectedBlock, Sizes, SelectSize, SizeFixedBlock} from '../../styledComponents'
 import { observable } from "mobx"
 import { observer } from "mobx-react"
 
@@ -25,10 +25,12 @@ class SizeFilter extends React.Component<SizeFilterProps>{
         })
       return (
         <SizeSelectedBlock>
-            <Sizes>Sizes:</Sizes>
-            <SelectSize>
-                {listOfButtons}
-            </SelectSize>
+            <SizeFixedBlock>
+                <Sizes>Sizes:</Sizes>
+                <SelectSize>
+                    {listOfButtons}
+                </SelectSize>
+            </SizeFixedBlock>
         </SizeSelectedBlock>
       )
     }
