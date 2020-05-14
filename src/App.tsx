@@ -5,26 +5,31 @@ import {
   Route,
 }
 from "react-router-dom";
-import { observable, configure } from 'mobx';
-import { observer } from 'mobx-react';
-import Home from './Home.js';
-import './components/CarsList/CarsList.css';
-import './components/TodosList/todos.css';
-import './App.css';
-import { Todos } from './components/TodosList/todos.js';
-import TodosMobX from './components/TodoWithMobX/TodoList.js';
+import { observer, Provider } from 'mobx-react';
+import Home from './Home';
+import LoginPage from './loginPage'
+import AuthRoutes from './Authentication/routes'  
+import ProductsRoute from './E-commerceSite/routes'
+import './App.css'
+import { Todos } from './components/TodosList/todos';
+import  TodosMObX  from './components/TodoWithMobX/TodoList';
+import TodosMobXmodel from './components/TodoWithStoreModel/index'
+import TodosWithNetWorkCall from './components/TodoWithNetWorkCall/index'
 import { CarsList } from './components/CarsList';
-import CountriesDashboardApp from './components/CountriesDashboardApp/index.js';
-import CountryDetails from './components/CountriesDashboardApp/countryDetails.js';
-import ReactComponents from './components/reactComponents/index.js';
-import './components/TodosList/todos.js';
-import EmojiesGame from './components/EmojiGameApp/index.js';
-import CounterPage from './components/CounterPage/index.js';
-import theme from './stores/ThemesStore/index.js';
-import EventApp from './components/EventPage/EventApp.js'
-import A from './components/Examples/ProviderExample1.js'
-
-
+import CountriesDashboardApp from './components/CountriesDashboardApp/index';
+import CountryDetails from './components/CountriesDashboardApp/countryDetails';
+import ReactComponents from './components/reactComponents/index';
+import './components/TodosList/todos';
+import GridMemoryGame from './components/GridMemoryGame/GridMemoryGame'
+import EmojiesGame from './components/EmojiGameApp/index';
+import CounterPage from './components/CounterPage/index';
+import theme from './stores/ThemesStore/index';
+import EventApp from './components/EventPage/EventApp'
+import A from './components/Examples/index'
+import UsersPage from "./components/UsersPage";
+import utilityStore from "./stores";
+import AuthStore from './Authentication/stores'
+import ProductsStore from './E-commerceSite/stores'
 
 // configure({ enforceActions: true });
 
@@ -38,12 +43,14 @@ class App extends React.Component {
 
 
 
+
   onChangeTheme = (mode) => {
     theme.setCurrentTheme(mode);
   }
   render() {
     return (
-      <Router basename={process.env.PUBLIC_URL}>
+      <Provider {...utilityStore}{...AuthStore}{...ProductsStore}>
+              <Router basename={process.env.PUBLIC_URL}>
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL.*/}
 <Switch>
@@ -63,15 +70,33 @@ class App extends React.Component {
             <EventApp />
           </Route>
 
+
           <Route path="/reactComponents">
             <ReactComponents />
           </Route>
           <Route path="/TodosList"> 
             <Todos />
           </Route>
+          <Route path="/EventApp">
+            <EventApp />
+          </Route>
+          <Route path="/provider-example"> 
+            <A />
+          </Route>
+          <Route path="/TodosMobX"> 
+            <TodosMObX />
+          </Route>
+          <Route path="/TodosMobXModel"> 
+            <TodosMobXmodel />
+          </Route>
+          <Route exact path="/Todos-with-network-call" component={TodosWithNetWorkCall} /> 
+          <Route path="/grid-memory-game">
+            <GridMemoryGame />
+          </Route>
           <Route path="/EmojiesGame">
             <EmojiesGame />
           </Route>
+          <Route exact path="/UserPage" component = {UsersPage}/>
           <Route exact path="/countriesDashboardApp">
             <CountriesDashboardApp  selectedTheme = {theme.selectedTheme} onThemeChange = {this.onChangeTheme}/>
           </Route>
@@ -81,11 +106,18 @@ class App extends React.Component {
           <Route path="/CarsList">
             <CarsList />
           </Route>
-          <Route path="/">
+          <Route path="/Home">
             <Home />
           </Route>
+          {ProductsRoute}
+          {AuthRoutes}
+          {/* <Route path="/">
+            <LoginPage />
+          </Route> */}
         </Switch> 
 </Router >
+</Provider>
+
     );
   }
 }

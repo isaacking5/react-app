@@ -1,16 +1,14 @@
 import React, { Component } from 'react'
-import { observer, inject } from 'mobx-react'
- import {CounterContainer, CounterInputTag, MainHeding, Button} from './styledComponents'
- import CounterStore from '../../stores/CounterStore/index.js'
+import { observer} from 'mobx-react'
+
+import CounterStore from '../../stores/CounterStore/index'
+
 // import counterStore from '../../stores'
 // const counterStore = stores.counterStore
-
-type Props = {
-  initialCount: number
-}
+import {CounterContainer, CounterInputTag, MainHeding, Button} from './styledComponents'
 
 @observer
-class CounterPage extends Component<Props> {
+class CounterPage extends Component {
   functionCalling
 
   handleIncrement = () => {
