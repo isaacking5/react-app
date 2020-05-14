@@ -3,34 +3,34 @@ import { observable } from 'mobx'
 import { observer } from 'mobx-react'
 
 @observer
-class AddEvent extends React.Component{
-@observable eventName
-@observable eventLocation
+class AddEvent extends React.Component {
+    @observable eventName
+    @observable eventLocation
 
-constuctor(){
-    this.eventName = ""
-    this.eventLocation = ""
-}
+    constuctor() {
+        this.eventName = ""
+        this.eventLocation = ""
+    }
 
-onAddEvent = () =>{
-    const {addEvent} = this.props
-    addEvent(this.eventName, this.eventLocation)
-    event.preventDefault()
-    this.eventName=""
-    this.eventLocation=""
-}
+    onAddEvent = (event) => {
+        const { addEvent } = this.props
+        addEvent(this.eventName, this.eventLocation)
+        event.preventDefault();
+        this.eventName = ""
+        this.eventLocation = ""
+    }
 
-onChangeEventName = () =>{
-    this.eventName = event.target.value
-}
+    onChangeEventName = (event) => {
+        this.eventName = event.target.value
+    }
 
-onChangeEventLocation = () =>{
-    this.eventLocation = event.target.value
-}
+    onChangeEventLocation = (event) => {
+        this.eventLocation = event.target.value
+    }
 
-render(){
-    return (
-        <div className="w-full flex justify-center">
+    render() {
+        return (
+            <div className="w-full flex justify-center">
         <form className = "flex w-3/4 border border-gray-700 m-4 justify-around items-center" onSubmit={this.onAddEvent}>
             <div className="flex flex-col w-1/3">
                 <input className="border border-gray-600 p-2 m-4" placeholder="Event name" type="text"  value={this.eventName} onChange = {this.onChangeEventName} required/>
@@ -41,8 +41,8 @@ render(){
             </div>
         </form>
         </div>
-    )
-}
+        )
+    }
 }
 
-export default  AddEvent
+export default AddEvent
