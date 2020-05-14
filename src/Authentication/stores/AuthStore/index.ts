@@ -32,6 +32,7 @@ class AuthStore {
     @action.bound
     setAuthAPIResponse(Response){
         setAccessToken(Response[0].access_token)
+
     }
 
     @action.bound
@@ -41,6 +42,7 @@ class AuthStore {
     @action.bound
     setAuthAPIStatus(apiStatus){
         this.getAuthApiStatus = apiStatus
+        console.log(apiStatus)
     }
 
     @action.bound
@@ -48,11 +50,15 @@ class AuthStore {
         this.getAuthApiError = apiError
     }
     @action.bound
-    getAuthAPI(){
-        const authServices = this.authServices.getAuthAPI()
+    getAuthAPI(success){
+        console.log("API call")
+        const authServices = this.authServices.signInAPI()
         return bindPromiseWithOnSuccess(authServices)
-        .to(this.setAuthAPIStatus, this.setAuthAPIResponse)
-        .catch(this.setAuthAPIError)
+        .to(this.setAuthAPIStatus,(resp) => {
+             this.setAuthAPIResponse(resp)
+             success()
+             })
+             .catch(this.setAuthAPIError)
     }
 
     @action.bound

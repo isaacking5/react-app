@@ -3,10 +3,10 @@ import {Route} from 'react-router-dom'
 
 import { PRODUCT_PATH } from "../constants/ProductRouteConstants";
 
-import Products from './ProductsRoute/index'
+import ProductsRoute from './ProductsRoute/index'
 
 const routes = [
-    <Route key={Math.random()} path={PRODUCT_PATH} component={Products} />,
+    <Route key={Math.random()} path={PRODUCT_PATH} component={ProductsRoute} />,
   ];
   
   export default routes;

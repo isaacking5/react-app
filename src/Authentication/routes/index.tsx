@@ -3,10 +3,10 @@ import {Route} from 'react-router-dom'
 
 import { SIGN_IN_PATH } from "../constants/RouteConstants";
 
-import LoginPage from './SignInRoute/index'
+import SignInRoute from './SignInRoute/index'
 
 const routes = [
-    <Route key={Math.random()} path={SIGN_IN_PATH} component={LoginPage} />,
+    <Route key={Math.random()} path={SIGN_IN_PATH} component={SignInRoute} />,
   ];
   
   export default routes;

@@ -29,10 +29,10 @@ export const SizeSelectedBlock = styled.div`
  `
 
  export const FreeDelivery = styled.img`
-   ${tw`absolute w-20 top-0 right-0`}
+   ${tw`absolute w-16 top-0 right-0`}
  `
  export const ImgBlock = styled.img`
-    ${tw`w-40 m-10`}
+    ${tw`w-40 m-6`}
  `
 
  export  const EachList = styled.li`
@@ -57,7 +57,7 @@ type SizeOptionsProps = {
  `
 
  export const HorzontalLine = styled.hr`
-    ${tw`w-6 h-1 bg-orange-600 mt-4 mb-4 rounded-lg`}
+    ${tw`w-6 h-1 bg-orange-600 mt-2 mb-2 rounded-lg`}
 `
  
 export const Price = styled.span`
@@ -244,7 +244,7 @@ export const SucessMessage = styled.span`
    ${tw`p-2`}
 `
 
-export const SearchBlock = styled.div`
+export const SearchBlock = styled.form`
    ${tw`w-9/12 flex justify-center items-center`}
 `
 

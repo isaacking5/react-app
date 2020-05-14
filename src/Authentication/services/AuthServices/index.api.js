@@ -1,7 +1,7 @@
 import { create } from "apisauce";
+import { action } from "mobx";
 import { networkCallWithApisauce } from "../../utils/APIUtils";
 import { apiMethods } from "../../../constants/APIConstants";
-import { action } from "mobx";
 import {END_POINTS} from '../../constants/RouteConstants/index'
 
 class AuthServices{
@@ -12,8 +12,8 @@ class AuthServices{
         })
     }
 
-    @action.bound
-    getAuthAPI(){
+
+    signInAPI(){
         return networkCallWithApisauce(this.api,END_POINTS.signIn, {}, apiMethods.get)
     }
 

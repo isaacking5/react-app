@@ -11,15 +11,12 @@ class ButtonWithLoader extends React.Component {
   render() {
     const {
       apiStatus,
-      renderSuccessUI: RenderSuccessUI,
       onRetryClick,
     } = this.props
 
     switch (apiStatus) {
       case API_FETCHING:
         return <LoadingView />
-      case API_SUCCESS:
-        return <RenderSuccessUI />
       case API_FAILED:
         return (
           <FailureView

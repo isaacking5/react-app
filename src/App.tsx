@@ -25,7 +25,7 @@ import EmojiesGame from './components/EmojiGameApp/index';
 import CounterPage from './components/CounterPage/index';
 import theme from './stores/ThemesStore/index';
 import EventApp from './components/EventPage/EventApp'
-import A from './components/Examples/ProviderExample1'
+import A from './components/Examples/index'
 import UsersPage from "./components/UsersPage";
 import utilityStore from "./stores";
 import AuthStore from './Authentication/stores'

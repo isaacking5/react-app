@@ -7,22 +7,11 @@ import {
 
 import "@testing-library/jest-dom/extend-expect";
 import Cookie from "js-cookie";
-import getUserSignInResponse from "../fixtures/getUserSignInResponse.json";
-import AuthServices from "../services/AuthServices/index.api";
-import AuthStore from "../stores/AuthStore/index";
+import getUserSignInResponse from "../../fixtures/getUserSignInResponse.json";
+import AuthServices from "../../services/AuthServices/index.api";
+import AuthStore from "./index";
 
 
-let mockSetCookie = jest.fn();
-let mockRemoveCookie = jest.fn();
-let mockGetCookie = jest.fn();
-
-Cookie.set = mockSetCookie;
-Cookie.remove = mockRemoveCookie;
-Cookie.get = mockGetCookie;
-
-global.mockSetCookie = mockSetCookie;
-global.mockRemoveCookie = mockRemoveCookie;
-global.mockGetCookie = mockGetCookie;
 describe("AuthStore Tests", () => {
   let authAPI;
   let authStore;
@@ -38,47 +27,41 @@ describe("AuthStore Tests", () => {
   });
 
   it("should test userSignInAPI data fetching state", () => {
+    const onSuccess = jest.fn();
     const mockLoadingPromise = new Promise(function(resolve, reject) {});
     const mockSignInAPI = jest.fn();
     mockSignInAPI.mockReturnValue(mockLoadingPromise);
-    authAPI.getAuthAPI = mockSignInAPI;
-
-    authStore.getAuthAPI();
+    
+    authAPI.signInAPI = mockSignInAPI;
+    authStore.getAuthAPI(onSuccess);
     expect(authStore.getAuthApiStatus).toBe(API_FETCHING);
+    expect(onSuccess).not.toBeCalled();
   });
 
   it("should test userSignInAPI success state", async () => {
-    const requestObject = {
-      username: "test-user",
-      password: "test-password"
-    };
-
+    const onSuccess = jest.fn();
     const mockSuccessPromise = new Promise(function(resolve, reject) {
       resolve(getUserSignInResponse);
     });
     const mockSignInAPI = jest.fn();
     mockSignInAPI.mockReturnValue(mockSuccessPromise);
-    authAPI.getAuthAPI = mockSignInAPI;
+    authAPI.signInAPI = mockSignInAPI;
 
-    await authStore.getAuthAPI();
+    await authStore.getAuthAPI(onSuccess);
     expect(authStore.getAuthApiStatus).toBe(API_SUCCESS);
     expect(mockSetCookie).toBeCalled();
+    expect(onSuccess).toBeCalled();
   });
 
   it("should test userSignInAPI failure state", async () => {
-
+    const onSuccess = jest.fn();
     const mockFailurePromise = new Promise(function(resolve, reject) {
-      // reject();
       reject(new Error("error"));
     });
-
     const mockSignInAPI = jest.fn();
     mockSignInAPI.mockReturnValue(mockFailurePromise);
-    authAPI.getAuthAPI = mockSignInAPI;
-
-    authStore = new AuthStore(authAPI);
-    await authStore.getAuthAPI(requestObject, onSuccess, onFailure);
-
+    authAPI.signInAPI = mockSignInAPI;
+    await authStore.getAuthAPI(onSuccess);
     expect(authStore.getAuthApiStatus).toBe(API_FAILED);
     expect(authStore.getAuthApiError).toBe("error");
   });

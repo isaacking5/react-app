@@ -1,2 +1,2 @@
-import {LoginPage} from './signInRoute'
-export default LoginPage
+import SignInRoute from './signInRoute'
+export default SignInRoute

@@ -10,6 +10,7 @@ class ProductsStore{
     @observable getProductsListAPIError
     @observable sizeFilter
     @observable sortBy
+    @observable searchedItem
     productsAPIServices
 
     constructor( productsAPIServices){
@@ -24,6 +25,7 @@ class ProductsStore{
         this.sortBy = "Select" // accending, decending
         this.getProductsListAPIStatus = API_INITIAL
         this.getProductsListAPIError = null
+        this.searchedItem = ""
     }
 
     @action.bound
@@ -78,8 +80,21 @@ class ProductsStore{
             this.sizeFilter = this.sizeFilter.filter((eachEl)=>{
                 return eachEl !== size
             })
+    }
 
-        // this.Products
+    @action.bound
+    searchedItems(searchedItem){
+        this.searchedItem = searchedItem
+    }
+
+    @action.bound
+    updateRenderList(productsListSearch){
+        const searchProducts = productsListSearch.filter((eachEl)=>{
+            let patt = new RegExp(this.searchedItem, 'i')
+            if(patt.test(eachEl.title))
+                return eachEl
+        })
+        return searchProducts
     }
 
     @computed
@@ -88,16 +103,35 @@ class ProductsStore{
     }
     @computed
     get sortedAndFilteredProducts(){
+        console.log(this.sortBy, "sortBy")
         if(this.sizeFilter.length <= 0){
             switch(this.sortBy){
                 case "Select":
-                    return this.ProductsList
+                    {
+                        if(this.searchedItem !==""){
+                            return this.updateRenderList(this.ProductsList)
+                        }
+                        return this.ProductsList
+                    }
+                    
                 case "Accending":
-                       return this.ProductsList.sort((a, b) => (a.price > b.price) ? 1 : -1)
+                    {
+                        const sortedList = this.ProductsList.sort((a, b) => (a.price > b.price) ? 1 : -1)
+                        if(this.searchedItem !==""){
+                            return this.updateRenderList(sortedList)
+                        }
+                        return sortedList
+                    }
+                       
                 case "Descending":
-                    return this.ProductsList.sort((a, b) => (a.price < b.price) ? 1 : -1)
+                    {
+                        const sortedList = this.ProductsList.sort((a, b) => (a.price < b.price) ? 1 : -1)
+                        if(this.searchedItem !==""){
+                            return this.updateRenderList(sortedList)
+                        }
+                        return sortedList
+                    }
             }
-            return this.ProductsList
         }
         else{
          
@@ -113,19 +147,37 @@ class ProductsStore{
                 })
                 switch(this.sortBy){
                     case "Select":
+                        {
+                            if(this.searchedItem !==""){
+                                return this.updateRenderList(products)
+                        }
+                    }
                         return products
                     case "Accending":
-                           return products.sort((a, b) => (a.price > b.price) ? 1 : -1)
+                        {
+                            const sortedList = products.sort((a, b) => (a.price > b.price) ? 1 : -1)
+                            if(this.searchedItem !==""){
+                                return this.updateRenderList(sortedList)
+                        }
+                        return sortedList
+                        }
+                           
                     case "Descending":
-                        return products.sort((a, b) => (a.price < b.price) ? 1 : -1)
+                        {
+                            const sortedList = products.sort((a, b) => (a.price < b.price) ? 1 : -1)
+                            if(this.searchedItem !==""){
+                                return this.updateRenderList(sortedList)
+                            }
+                        return sortedList
+                        }
                 }
         }
     }
 
-    @computed
-    get totalNoOfProductsDisplayed(){
-        return ""
-    }
+    // @computed
+    // get totalNoOfProductsDisplayed(){
+    //     return ""
+    // }
 }
 
 

@@ -1,3 +1,3 @@
-import {Products} from './ProductsRoute'
+import ProductsRoute from './ProductsRoute'
 
-export default Products
+export default ProductsRoute
