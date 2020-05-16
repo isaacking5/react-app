@@ -7,32 +7,6 @@ addEvent : Function
 }
 
 @observer
-<<<<<<< HEAD:src/components/EventPage/AddEvent.js
-class AddEvent extends React.Component {
-    @observable eventName
-    @observable eventLocation
-
-    constuctor() {
-        this.eventName = ""
-        this.eventLocation = ""
-    }
-
-    onAddEvent = (event) => {
-        const { addEvent } = this.props
-        addEvent(this.eventName, this.eventLocation)
-        event.preventDefault();
-        this.eventName = ""
-        this.eventLocation = ""
-    }
-
-    onChangeEventName = (event) => {
-        this.eventName = event.target.value
-    }
-
-    onChangeEventLocation = (event) => {
-        this.eventLocation = event.target.value
-    }
-=======
 class AddEvent extends React.Component<AddEventProps>{
 @observable eventName : string = ""
 @observable eventLocation : string = ""
@@ -57,7 +31,6 @@ onChangeEventName = (event) =>{
 onChangeEventLocation = (event) =>{
     this.eventLocation = event.target.value
 }
->>>>>>> 21325854aa8e149b01f4be41b7e912aec1f8424a:src/components/EventPage/AddEvent.tsx
 
     render() {
         return (
