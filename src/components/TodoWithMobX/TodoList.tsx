@@ -1,11 +1,6 @@
 import React from 'react';
-<<<<<<< HEAD:src/components/TodoWithMobX/TodoList.js
-import { observer } from 'mobx-react'
-import { observable, toJS } from 'mobx';
-=======
 import {observer} from 'mobx-react'
 import { observable,  toJS} from 'mobx';
->>>>>>> 21325854aa8e149b01f4be41b7e912aec1f8424a:src/components/TodoWithMobX/TodoList.tsx
 import './todoCSS.css';
 
 type TodosMObXProps = {
