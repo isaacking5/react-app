@@ -30,6 +30,7 @@ import UsersPage from "./components/UsersPage";
 import utilityStore from "./stores";
 import AuthStore from './Authentication/stores'
 import ProductsStore from './E-commerceSite/stores'
+import ReactAdvanceConcepts from './components/ReactAdvanceConcept/ReactAdvance'
 
 // configure({ enforceActions: true });
 
@@ -90,6 +91,7 @@ class App extends React.Component {
             <TodosMobXmodel />
           </Route>
           <Route exact path="/Todos-with-network-call" component={TodosWithNetWorkCall} /> 
+          <Route exact path="/React-advance-concepts" component={ReactAdvanceConcepts} /> 
           <Route path="/grid-memory-game">
             <GridMemoryGame />
           </Route>
