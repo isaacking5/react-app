@@ -6,6 +6,7 @@ import withToggle from './withToggle'
 type ViewEditToggleProps =  {
     isToggleStatus : boolean
     onToggle : any
+
 }
 @observer
 class ViewEditToggle extends React.Component<ViewEditToggleProps>{
@@ -16,7 +17,7 @@ class ViewEditToggle extends React.Component<ViewEditToggleProps>{
     render(){
         const {isToggleStatus, onToggle} = this.props
         return(
-            <div className="bg-gray-400 p-2">
+            <div className="bg-gray-300 p-2">
                 <p className="font-bold text-center p-2">ViewEditToggle</p>
                 <div className="justify-center flex">
                     {isToggleStatus? 
@@ -28,6 +29,7 @@ class ViewEditToggle extends React.Component<ViewEditToggleProps>{
             </div>
         )
     }
+    
 } 
 
 export default withToggle(ViewEditToggle)
