@@ -1,5 +1,6 @@
 import React from 'react';
-import {EachEmoji, Img, EmojiName, EmojisList} from './styledComponents'
+import {EmojisList} from './styledComponents'
+import EachEmojiCard from "./EachEmojiCard";
 class EmojiCard extends React.Component{
     onEmojiClick = (eachEmoji) =>{
         this.props.onEmojiClick(eachEmoji);
@@ -7,12 +8,11 @@ class EmojiCard extends React.Component{
     render(){
         const {emojis, theme} = this.props;
         const emojisList = emojis.map((eachEmoji)=>{
-            return(
-                <EachEmoji key={eachEmoji.id} onClick = {()=>this.onEmojiClick(eachEmoji)} theme={theme}>
-                    <Img src={eachEmoji.image} />
-                    <EmojiName>{eachEmoji.name}</EmojiName>
-                </EachEmoji>
-            )
+            return(<EachEmojiCard 
+                onEmojiClick={this.onEmojiClick} 
+                theme = {theme}
+                eachEmoji = {eachEmoji}
+            />)
         });
         return (
         <EmojisList theme={theme}>{emojisList}</EmojisList>

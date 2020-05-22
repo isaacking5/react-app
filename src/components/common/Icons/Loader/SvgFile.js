@@ -8,14 +8,14 @@ class Loader extends Component {
   };
 
   render() {
-    const { width, height, fill } = this.props;
+    const { width, height,color, fill } = this.props;
     return (
       <svg
         width={width}
         height={height}
         viewBox="0 0 120 30"
         xmlns="http://www.w3.org/2000/svg"
-        fill={fill}
+        fill={color?color:fill}
         aria-label="audio-loading"
       >
         <circle cx={15} cy={15} r="12.2657">

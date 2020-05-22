@@ -24,6 +24,7 @@ class LoginPage extends React.Component <LoginPageProps>{
         this.userNameRef.current.focus()
     }
     render(){
+        console.log("render")
         const {
             gotoHomeScreenIfLoggrdIn,
             onUsernameChange,
@@ -31,7 +32,6 @@ class LoginPage extends React.Component <LoginPageProps>{
             isClicked,
             getAuthApiStatus,
             doNetworkCalls,
-            renderSucessUI,
             errorMessage,
             username,
             password
@@ -42,13 +42,18 @@ class LoginPage extends React.Component <LoginPageProps>{
                     <SignInHeading>Sign In</SignInHeading>
                     <UsernameField type = "text" ref = {this.userNameRef} value={username} placeholder = "Username" onChange ={onUsernameChange}/>
                     <PasswordField type = "password" value={password} placeholder = "Password" onChange ={onPasswordChange}/>
-                    <LoginButton>
+                    <SigninBtn  isClicked={isClicked}  
+                                apiStatus = {getAuthApiStatus}
+                                onRetryClick = {doNetworkCalls}
+                                displayText = {"sign In"}
+                    />
+                    {/* <LoginButton>
                          {isClicked?
                          <ButtonWithLoader
                             apiStatus = {getAuthApiStatus}
                             onRetryClick = {doNetworkCalls}
                         /> : "Sign In"}
-                    </LoginButton>
+                    </LoginButton> */}
                     <ErrorMesage>{errorMessage}</ErrorMesage>
                 </LoginForm>
             </LoginPAGE>
@@ -57,6 +62,15 @@ class LoginPage extends React.Component <LoginPageProps>{
     }
 }
 export default LoginPage
+
+
+export const SigninBtn = (props) => ( <LoginButton style = {props.style}>
+    {props.isClicked?
+    <ButtonWithLoader
+       apiStatus = {props.apiStatus}
+       onRetryClick = {props.onRetryClick}  
+    /> : `${props.displayText}`}
+    </LoginButton>)
 
 
 

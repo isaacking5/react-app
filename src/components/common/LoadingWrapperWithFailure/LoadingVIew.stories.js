@@ -1,22 +1,22 @@
 import React from 'react'
-import { withKnobs} from '@storybook/addon-knobs'
+import { withKnobs, color} from '@storybook/addon-knobs'
 
 import '../../../styles/tailwind.css'
 import LoadingView from './LoadingView'
 
 export default {
     component: LoadingView,
-    title: 'Common/LoadingView'
- }
-
- export const defaultView = () => <LoadingView />
-
- export const knobs = () =>{
-     <LoadingView />
- }
-
- knobs.story = {
+    title: 'Common/LoadingView',
     decorators: [withKnobs]
  }
+
+ export const defaultView = () => <LoadingView color={color("loaderColor", "blue")}/>
+
+ export const knobs = () =>
+     <LoadingView color={color("loaderColor", "blue")}/>
+
+//  knobs.story = {
+//     decorators: [withKnobs]
+//  }
 
  

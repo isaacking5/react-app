@@ -9,6 +9,7 @@ import FailureView from './FailureView'
 @observer
 class ButtonWithLoader extends React.Component {
   render() {
+    console.log("ButtonWithLoader")
     const {
       apiStatus,
       onRetryClick,

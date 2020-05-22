@@ -1,7 +1,7 @@
 import React from 'react'
 import { observer } from 'mobx-react'
 
-import {FailureViewContainer, RetryButton} from './styledComponent.js'
+import {RetryButton} from './styledComponent.js'
 
 @observer
 class FailureView extends React.Component {
