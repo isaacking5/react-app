@@ -1,5 +1,3 @@
-import React, { Component } from 'react';
-
 import { action } from '@storybook/addon-actions';
 import { withKnobs, text, number, boolean,color } from '@storybook/addon-knobs'
 

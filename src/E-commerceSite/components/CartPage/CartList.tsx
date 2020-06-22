@@ -16,7 +16,8 @@ class CartList extends React.Component<CartListProps>{
         const {cartProductList, getProductDetailsById, onRemoveCartItem} = this.props;
         const cartData:any =[];
          cartProductList.forEach((cartModel,key)=>{
-          const productDetails =  getProductDetailsById(cartModel.productId)
+          const productDetails =  getProductDetailsById(cartModel.product.productId)
+          console.log("product details",productDetails)
           cartData.push(<CartItems key={Math.random()}  
                         productDetails = {productDetails} 
                         quantity={cartModel.quantity}

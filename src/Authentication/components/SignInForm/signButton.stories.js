@@ -19,7 +19,7 @@ export const loadigView = () => <SigninBtn
                                 isClicked={true}
                                 apiStatus = {100}  
                                 onRetryClick = {action("networlCall triggred")}
-                                style = {{width:"100px", backgroundColor:"black"}}
+                                style = {{width:"400px", backgroundColor:"black"}}
                             />
 
 
@@ -28,7 +28,7 @@ export const knobs = () => (
         isClicked={boolean("isClickedOrNot",true)}
         apiStatus = {number("apiStatus",100)}  
         onRetryClick = {action("networlCall triggred")}
-        style = {{width:number("Width",`${100}px`), backgroundColor:color("background","black")}}
+        style = {{width:number("Width",`${400}px`), backgroundColor:color("background","black")}}
         displayText={text("text","Sign in")}
     />
 )

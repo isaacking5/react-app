@@ -2,11 +2,11 @@ import { observable, action } from "mobx";
 
 class CartModel {
   @observable cartId
-  @observable productId
+  @observable product
   @observable quantity
   constructor(cartData){
     this.cartId = cartData.cartId
-    this.productId = cartData.productId
+    this.product = cartData.product
     this.quantity = cartData.quantity
   }
 

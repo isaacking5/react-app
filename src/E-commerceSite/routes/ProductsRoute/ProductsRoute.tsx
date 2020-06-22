@@ -2,11 +2,13 @@ import React from 'react'
 import { inject, observer} from "mobx-react"
 import {Redirect, withRouter} from 'react-router-dom'
 import { observable } from "mobx"
-import {SIGN_IN_PATH} from '../../constants/ProductRouteConstants/index'
+import {SIGN_IN_PATH, END_POINTS} from '../../constants/ProductRouteConstants/index'
 import SizeFilter from '../../components/ProductPage/SizeFiltered'
 import Header from '../../components/ProductPage/Header'
 import EachProduct from '../../components/ProductPage/EachProduct'
 import Products from '../../components/ProductPage/index'
+import {Pagination} from '../../components/Pagination/index'
+
  import {ProductDisplayContainer, ListOfProductsBlock, ProductsListBlock,} from '../../styledComponents/index'
 
 type ProductsRouteProps = {
@@ -18,7 +20,10 @@ type ProductsRouteProps = {
 @inject("authStore", "productsStore", "cartStore")
 @observer
 class ProductsRoute extends React.Component<ProductsRouteProps>{
-    @observable isUserSignOut = false
+    @observable isUserSignOut = false;
+    @observable numberOfProductsPerPage = 4;
+    @observable offSet = 0;
+    currentPage = 1
     componentDidMount = () =>{
         this.doNetWorkCallForProducts()
     }
@@ -28,17 +33,30 @@ class ProductsRoute extends React.Component<ProductsRouteProps>{
     }
 
     doNetWorkCallForProducts = () =>{
+        END_POINTS.products = `products?limit=${this.numberOfProductsPerPage}&offset=${this.offSet}`
         this.getProductsStore().getProductsAPI()
     }
 
+    gotoNextPage = () => {
+        this.offSet += this.numberOfProductsPerPage
+        this.currentPage += 1
+        this.doNetWorkCallForProducts()
+    }
+
+    gotoPrevPage = () =>{
+        this.offSet -= this.numberOfProductsPerPage
+        this.currentPage -= 1
+        this.doNetWorkCallForProducts()
+    }
+
     renderSuccessUI = observer(() =>{
-        const{Products, onChangeSortBy} = this.getProductsStore()
-        console.log("renderSucessUI",Products)
+        const{Products, onChangeSortBy, totalProducts} = this.getProductsStore()
         const ListOfItems = Products.map((eachItem)=>{
             return(<EachProduct key= {Math.random().toString()} eachItem = {eachItem} cartStore={this.props.cartStore}/>)
         })
 
         return (
+            <div>
             <ProductDisplayContainer>
                 <SizeFilter onSelectSize = {this.getProductsStore().onSelectSize}/>
                 <ProductsListBlock>
@@ -46,6 +64,13 @@ class ProductsRoute extends React.Component<ProductsRouteProps>{
                     <ListOfProductsBlock>{ListOfItems}</ListOfProductsBlock>
                 </ProductsListBlock>
             </ProductDisplayContainer>
+            <Pagination gotoNextPage = {this.gotoNextPage} 
+                        gotoPrevPage = {this.gotoPrevPage}
+                        totalProducts = {totalProducts}
+                        numberOfProductsPerPage = {this.numberOfProductsPerPage}
+                        currentPage ={this.currentPage}
+            />
+            </div>
             )
     })
 

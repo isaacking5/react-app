@@ -36,7 +36,9 @@ class EachProduct extends React.Component<EachProductProps>{
 
     onClickAddToCart = () =>{
         const {eachItem} = this.props
-        this.props.cartStore.onClickAddToCart(eachItem.productId)
+        // this.props.cartStore.onClickAddToCart(eachItem.productId)
+        this.props.cartStore.onClickAddToCart(eachItem)
+
         toast.warn(<MyToast />, {
             position: toast.POSITION.BOTTOM_CENTER,
           });

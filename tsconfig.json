@@ -18,7 +18,7 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true
   },
-  "include": ["src"],
+  "include": ["src", "../tap-mini-project/src/ContentManagementPortal/components/Icons/Loader/SvgFile.js"],
   "exclude": [
     "node_modules/@storybook",
     "node_modules",

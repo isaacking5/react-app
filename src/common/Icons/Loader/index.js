@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import SvgComponent from "../../SvgComponent";
-import SvgFile from "./SvgFile";
+import SvgFile from "../../../../../tap-mini-project/src/ContentManagementPortal/components/Icons/Loader/SvgFile";
 
 class Loader extends Component {
   render() {

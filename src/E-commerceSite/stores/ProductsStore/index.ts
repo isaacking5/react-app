@@ -12,6 +12,7 @@ class ProductsStore{
     @observable sortBy
     @observable searchedItem
     productsAPIServices
+    totalProducts
 
     constructor( productsAPIServices){
         this. productsAPIServices =  productsAPIServices
@@ -26,6 +27,7 @@ class ProductsStore{
         this.getProductsListAPIStatus = API_INITIAL
         this.getProductsListAPIError = null
         this.searchedItem = ""
+        this.totalProducts = null
     }
 
     @action.bound
@@ -35,7 +37,8 @@ class ProductsStore{
 
     @action.bound
     getProductsList(productsResponse){
-        productsResponse.forEach((eachItem)=>{
+        this.totalProducts = productsResponse.total
+        productsResponse.products.forEach((eachItem)=>{
             const productModel = new ProductModel(eachItem)
             this.ProductsList.push(productModel)
         })
